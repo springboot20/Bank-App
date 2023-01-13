@@ -28,6 +28,7 @@ body {
   height: 100vh;
   background: #eeeeee;
   font-family: Ubuntu;
+  position: relative;
 }
 
 .container {
@@ -46,15 +47,8 @@ body {
 /************************
    NAV STYLING
 ***********************/
-nav.app-navigation {
-  height: 5rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--color-danger);
-  box-shadow: 0 0 4px hsla(0 0% 0% / 2);
-  z-index: 1;
+nav.navigation {
+  overflow: hidden;
 }
 
 .navigation-container .nav-menu-container ul.nav-menu {
@@ -276,12 +270,26 @@ li.nav-item ul.dropdown-menu.show li:nth-child(3) {
 /***********************************
   MAIN STYLING
  *********************************/
+main.main {
+  position: absolute;
+}
+
+nav.app-navigation {
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--color-danger);
+  box-shadow: 0 0 4px hsla(0 0% 0% / 2);
+  z-index: 1;
+}
+
 .nav-container {
   height: 100%;
+  width: 100%;
   padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .nav-container .nav-logo {
@@ -343,12 +351,12 @@ li.nav-item ul.dropdown-menu.show li:nth-child(3) {
 /******************************
     MEDIA QUERIES
 *******************************/
-@media screen and (max-width:1200px) {
+@media screen and (max-width:768px) {
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
     left: 0;
-    transform: translateX(-100%);
+    transform: translateX(-200%);
     padding: 8.5rem 30px;
     width: 40%;
     z-index: 99;
@@ -356,55 +364,66 @@ li.nav-item ul.dropdown-menu.show li:nth-child(3) {
     height: 100%;
     transition: all 500ms ease-in-out;
   }
+
+  .nav-container {
+    justify-content: space-between;
+  }
 }
 
-@media screen and (min-width:1221px) {
-  nav.app-navigation {
-    height: 5rem;
+@media screen and (min-width:769px) {
+  .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
-    left: 28.5%;
-    width: calc(100% - 28.5%);
-    background: var(--color-danger);
-    box-shadow: 0 0 4px hsla(0 0% 0% / 2);
+    left: 0;
+    transform: translateX(-200%);
+    padding: 8.5rem 30px;
+    width: 40%;
+    z-index: 99;
+    background: var(--color-primary) no-repeat;
+    height: 100%;
+    transition: all 500ms ease-in-out;
   }
 
+  .nav-container {
+    gap: 43rem;
+  }
+
+}
+
+@media screen and (min-width:992px) {
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
     left: 0;
     transform: translateX(0%);
     padding: 8.5rem 30px;
-    width: 350px;
-    z-index: 1;
+    width: 300px;
+    z-index: 99;
     background: var(--color-primary) no-repeat;
     height: 100%;
     transition: all 500ms ease-in-out;
   }
 
+  main.main {
+    position: absolute;
+    left: 300px;
+    height: 100vh;
+    width: calc(100% - 300px);
+  }
+
   .nav-menu-container ul li {
     opacity: 1;
-    margin-left: 35px;
-    width: 80%;
+    margin-left: 25px;
+    width: 95%;
     transition: all 500ms ease;
+  }
+
+  .nav-container {
+    gap: 38rem;
   }
 
   .navigation-container .nav-menu-container>span.close-icon,
   .notification-container button>span.fas {
     display: none;
-  }
-}
-
-
-@media screen and (min-width:1400px) {
-  nav.app-navigation {
-    height: 5rem;
-    position: absolute;
-    top: 0;
-    left: 21.85%;
-    width: calc(100% - 21.85%);
-    background: var(--color-danger);
-    box-shadow: 0 0 4px hsla(0 0% 0% / 2);
-    z-index: 99;
   }
 }
