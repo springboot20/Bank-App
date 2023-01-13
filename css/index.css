@@ -351,14 +351,14 @@ nav.app-navigation {
 /******************************
     MEDIA QUERIES
 *******************************/
-@media screen and (max-wdth:425px) {
+@media screen and (max-width:425px) {
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
     left: 0;
     transform: translateX(-200%);
     padding: 8.5rem 30px;
-    width: 80%;
+    width: 80% !important;
     z-index: 99;
     background: var(--color-primary) no-repeat;
     height: 100%;
