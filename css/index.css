@@ -266,26 +266,52 @@ li.nav-item ul.dropdown-menu.show li:nth-child(3) {
   color: #eeeeee;
 }
 
-.log-out {
-  display: inline-block;
-  width: 100%;
-  margin-left: 12px;
+ul.log-out {
+  list-style: none;
   position: absolute;
   bottom: 20%;
   transform: translateY(-20%);
 }
 
-.log-out .log-out-container {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
+ul.log-out li.log-out-container {
+  opacity: 0;
+  margin-left: 300px;
+  width: 100%;
+  border-radius: 0.5rem;
+  transition: all 500ms;
 }
 
-.log-out-container span {
+.nav-menu-container.active ul.log-out li.log-out-container {
+  transition-delay: 0.7s;
+}
+
+.nav-menu-container.active ul.log-out li.log-out-container {
+  margin-left: 0px;
+  opacity: 1;
+}
+
+ul.log-out li.log-out-container a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  white-space: nowrap;
+  color: var(--color-white);
+  font-weight: 500;
+  margin: 15px 0 10px 0;
+  transition: all 500ms ease;
+}
+
+li.log-out-container a span {
   color: var(--color-white);
 }
 
-.log-out-container span.fas {
+li.log-out-container a span.log-out-label {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+li.log-out-container span.fas {
   font-size: 1.9em;
   min-width: 50px;
   line-height: 50px;
@@ -459,6 +485,10 @@ nav.app-navigation {
 
   .nav-container {
     gap: 38rem;
+  }
+
+  .log-out .log-out-container {
+    width: 90%;
   }
 
   .navigation-container .nav-menu-container>span.close-icon,

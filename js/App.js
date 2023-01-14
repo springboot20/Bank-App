@@ -62,12 +62,3 @@ function linkAction() {
   navMenu.classList.remove("show");
 }
 navLinks.forEach((m) => m.addEventListener("click", linkAction));
-
-const navigationBtn = document.querySelector('.logBtn')
-console.log(navigationBtn)
-
-navigationBtn.addEventListener('click', () => {
-  alert('clicked')
-  window.location.href = 'index.html'
-  console.log(window.location.href)
-})
