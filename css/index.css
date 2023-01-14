@@ -440,3 +440,9 @@ nav.app-navigation {
     display: none;
   }
 }
+
+@media screen and (min-width:1200px) {
+  .nav-container {
+    gap: 57rem;
+  }
+}
