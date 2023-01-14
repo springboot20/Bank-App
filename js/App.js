@@ -25,10 +25,10 @@ const showMenu = (openId, menuId) => {
   }
 }
 /**
- * 
- * @param {*} dropId 
- * @param {*} dropBtn 
- * @param {*} dropDown 
+ *
+ * @param {*} dropId
+ * @param {*} dropBtn
+ * @param {*} dropDown
  */
 
 const showDropDown = (dropId, dropBtn, dropDown) => {
@@ -62,3 +62,12 @@ function linkAction() {
   navMenu.classList.remove("show");
 }
 navLinks.forEach((m) => m.addEventListener("click", linkAction));
+
+const navigationBtn = document.querySelector('.logBtn')
+console.log(navigationBtn)
+
+navigationBtn.addEventListener('click', () => {
+  alert('clicked')
+  window.location.href = 'index.css'
+  console.log(window.location.href)
+})

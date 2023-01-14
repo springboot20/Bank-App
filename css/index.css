@@ -266,6 +266,32 @@ li.nav-item ul.dropdown-menu.show li:nth-child(3) {
   color: #eeeeee;
 }
 
+.log-out {
+  display: inline-block;
+  width: 100%;
+  margin-left: 12px;
+  position: absolute;
+  bottom: 20%;
+  transform: translateY(-20%);
+}
+
+.log-out .log-out-container {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.log-out-container span {
+  color: var(--color-white);
+}
+
+.log-out-container span.fas {
+  font-size: 1.9em;
+  min-width: 50px;
+  line-height: 50px;
+  height: 50px;
+}
+
 /***********************************
   MAIN STYLING
  *********************************/
