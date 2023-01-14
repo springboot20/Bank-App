@@ -68,6 +68,6 @@ console.log(navigationBtn)
 
 navigationBtn.addEventListener('click', () => {
   alert('clicked')
-  window.location.href = 'index.css'
+  window.location.href = 'index.html'
   console.log(window.location.href)
 })
