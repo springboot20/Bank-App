@@ -4,6 +4,7 @@
  * @param {*} menuId
  * @returns
  */
+
 const showMenu = (openId, menuId) => {
   const menu = document.querySelector(`.${menuId}`)
   const openBtn = document.querySelector(`#${openId}`)
@@ -29,26 +30,28 @@ const showMenu = (openId, menuId) => {
  * @param {*} dropId
  * @param {*} dropBtn
  */
-const showDropDown = (dropId, dropBtn) => {
+
+const showDropDown = (dropId, dropBtn, dropDown) => {
   const menu = document.getElementById(`${dropId}`)
-  const dropButton = document.querySelector(`button span.${dropBtn}`)
+  const dropB = document.querySelector(`span.${dropBtn}`)
+  const dropButton = document.querySelector(`.${dropDown}`)
+  console.log(dropB)
 
   dropButton.addEventListener('click', () => {
-    if (dropButton.classList.contains('fa-plus')) {
+    if (dropB.classList.contains('fa-plus')) {
       menu.classList.add('show')
-      dropButton.classList.replace('fa-plus', 'fa-minus')
+      dropB.classList.replace('fa-plus', 'fa-minus')
     } else {
       menu.classList.remove('show')
-      dropButton.classList.replace('fa-minus', 'fa-plus')
+      dropB.classList.replace('fa-minus', 'fa-plus')
     }
   })
 }
 
 (() => {
   showMenu('open-btn', 'nav-menu-container')('close-icon')
-  showDropDown('dropMenu', 'drop-icon')
+  showDropDown('dropMenu', 'drop-icon', 'dropdown')
 })()
-
 
 const navLinks = document.querySelectorAll(".nav-item a.nav-link");
 function linkAction() {
