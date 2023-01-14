@@ -278,7 +278,7 @@ ul.log-out li.log-out-container {
   margin-left: 300px;
   width: 100%;
   border-radius: 0.5rem;
-  transition: all 500ms;
+  transition: all 500ms ease;
 }
 
 .nav-menu-container.active ul.log-out li.log-out-container {
@@ -479,6 +479,13 @@ nav.app-navigation {
   .nav-menu-container ul li {
     opacity: 1;
     margin-left: 25px;
+    width: 95%;
+    transition: all 500ms ease;
+  }
+
+  ul.log-out li.log-out-container {
+    opacity: 1;
+    margin-left: 34px;
     width: 95%;
     transition: all 500ms ease;
   }
