@@ -27,6 +27,111 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow: hidden;
+  }
+
+  .animation-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .animation-container span {
+    display: block;
+    position: absolute;
+    bottom: -200px;
+    height: 40px;
+    width: 40px;
+    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.6));
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    animation: bubbles 15s infinite linear;
+    overflow: hidden;
+  }
+
+  .animation-container span::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: 100%;
+    transform: skew(45deg) translateX(150px);
+    background: rgba(0, 0, 0, 0.1);
+    animation: Mirror 2s linear infinite;
+  }
+
+  @keyframes Mirror {
+    100% {
+      transform: translateX(-450px);
+    }
+  }
+
+  .animation-container span:nth-child(1) {
+    left: 10%;
+    height: 50px;
+    width: 50px;
+    animation-delay: 0.4s;
+  }
+
+  .animation-container span:nth-child(2) {
+    left: 20%;
+    height: 65px;
+    width: 65px;
+    animation-delay: 0.6s;
+  }
+
+  .animation-container span:nth-child(3) {
+    left: 35%;
+    height: 65px;
+    width: 65px;
+    animation-delay: 0.1s;
+  }
+
+  .animation-container span:nth-child(4) {
+    left: 55%;
+    height: 75px;
+    width: 75px;
+    animation-delay: 0.9s;
+  }
+
+  .animation-container span:nth-child(5) {
+    left:67%;
+    height: 85px;
+    width: 85px;
+    animation-delay: 0.3s;
+  }
+
+  .animation-container span:nth-child(6) {
+    left: 80%;
+    height: 35px;
+    width: 35px;
+    animation-delay: 0.55s;
+  }
+
+  @keyframes bubbles {
+    0% {
+      transform: translateY(0) rotate(0);
+      opacity: 1;
+      border-radius: 0;
+    }
+
+    10% {
+      opacity: 1;
+      border-radius: 0;
+    }
+
+    25% {
+      opacity: 1;
+      border-radius: 20%;
+    }
+
+    100% {
+      transform: translateY(-120vh) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+    }
 }
 
 .App-demo {
@@ -61,13 +166,9 @@ p.demo-text span.fa-piggy-bank {
   text-shadow: 0 0 10px hsla(0 0% 0%);
 }
 
-.form-container {
-  width: 380px
-}
-
 .form-field button {
   width: 100%;
-  padding: 0.85em 0;
+  padding: 0.95em 0;
   border-radius: 0.55rem;
   outline: none;
   border: none;
@@ -79,7 +180,7 @@ p.demo-text span.fa-piggy-bank {
   display: flex;
   align-items: center;
   text-align: center;
-  gap: 3rem;
+  gap: 4.5rem;
   color: #625be7;
   transition: all 400ms ease;
   border: 2px solid transparent;
@@ -93,8 +194,8 @@ p.demo-text span.fa-piggy-bank {
 }
 
 .form-field button>span.fab {
-  font-size: 1.5em;
-  margin-left: 3.5rem;
+  font-size: 1.8em;
+    margin-left: 4.5rem;
 }
 
 .form-container p.form-label {
@@ -116,4 +217,70 @@ p.demo-text span.fa-piggy-bank {
 .form-container p.form-label>a:active {
   color: #f75842;
   text-decoration: underline;
+}
+
+@media screen and (max-width:375px) {
+  .form-container {
+    width: 350px
+  }
+}
+
+@media screen and (min-width:376px) {
+  .form-container {
+    width: 360px
+  }
+}
+
+@media screen and (min-width:768px) {
+  h1.demo-title {
+    font-size: 3em;
+  }
+
+  p.demo-text {
+    font-size: 1.55em;
+  }
+
+  .form-container {
+    width: 460px
+  }
+
+  .form-field button.google:hover {
+    border-color: var(--color-white);
+    background: transparent;
+    color: var(--color-white);
+  }
+
+  .form-field button.create:hover {
+    background: var(--color-white);
+    border: 2px solid transparent;
+    color: #625be7;
+  }
+
+  .form-field button.google>span.btn-text {
+    font-size: 1.65em;
+  }
+}
+
+animation-container span:nth-child(1):before {
+  animation-delay: 2.5s;
+}
+
+animation-container span:nth-child(2):before {
+  animation-delay: 3.51s;
+}
+
+animation-container span:nth-child(3)::before {
+  animation-delay: 4.3s;
+}
+
+animation-container span:nth-child(4)::before {
+  animation-delay: 4.5s;
+}
+
+animation-container span:nth-child(5)::before {
+  animation-delay: 1s;
+}
+
+animation-container span:nth-child(6)::before {
+  animation-delay: 1s;
 }
