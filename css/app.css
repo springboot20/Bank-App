@@ -11,10 +11,7 @@
 }
 
 :root {
-  --container-width-xl: 1240px;
-  --container-width-lg: 1140px;
-  --container-width-md: 720px;
-  --container-width-sm: 720px;
+  --container-width-lg: 70%;
   --container-width-xm: 100%;
 
   --color-primary: linear-gradient(#3127d3, #080624dd, #08053add);
@@ -134,6 +131,10 @@ ul.nav-menu li.nav-item a.nav-link:hover::after {
   background: #f75842;
 }
 
+.nav-menu-container ul.nav-menu li.nav-item a.nav-link.active-link {
+  background: hsla(0, 0%, 0%, 0.2);
+}
+
 .nav-menu-container ul.nav-menu li.nav-item a.nav-link.active-link::after {
   position: absolute;
   content: " ";
@@ -195,15 +196,15 @@ li.nav-item ul.dropdown-menu.show li.drop-item {
   margin-left: 5px;
 }
 
-li.nav-item ul.dropdown-menu.show li:nth-child(1) {
+ul.dropdown-menu.show li:nth-child(1) {
   transition-delay: 0.3s;
 }
 
-li.nav-item ul.dropdown-menu.show li:nth-child(2) {
+ul.dropdown-menu.show li:nth-child(2) {
   transition-delay: 0.4s;
 }
 
-li.nav-item ul.dropdown-menu.show li:nth-child(3) {
+ul.dropdown-menu.show li:nth-child(3) {
   transition-delay: 0.5s;
 }
 
@@ -267,11 +268,8 @@ li.nav-item ul.dropdown-menu.show li:nth-child(3) {
 }
 
 ul.log-out {
-  position: absolute;
-  margin-top: 9rem;
+  margin-top: 4rem;
   list-style: none;
-  bottom: 10%;
-  transform: translateY(-20%);
 }
 
 ul.log-out li.log-out-container {
@@ -315,7 +313,6 @@ li.log-out-container a span.log-out-label {
 li.log-out-container span.fas {
   transform: rotateZ(180deg);
   font-size: 1.9em;
-  min-width: 50px;
   line-height: 50px;
   height: 50px;
 }
@@ -420,6 +417,10 @@ nav.app-navigation {
 }
 
 @media screen and (max-width: 768px) {
+
+  /* .container{
+    width: var(--container-width-md);
+  } */
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
@@ -453,7 +454,7 @@ nav.app-navigation {
   }
 
   .nav-container {
-    gap: 43rem;
+    gap: 45rem;
   }
 }
 
@@ -493,7 +494,7 @@ nav.app-navigation {
   }
 
   .nav-container {
-    gap: 38rem;
+    gap: 40rem;
   }
 
   .log-out .log-out-container {

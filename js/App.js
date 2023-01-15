@@ -28,16 +28,13 @@ const showMenu = (openId, menuId) => {
  *
  * @param {*} dropId
  * @param {*} dropBtn
- * @param {*} dropDown
  */
 
-const showDropDown = (dropId, dropBtn, dropDown) => {
+const showDropDown = (dropId, dropBtn) => {
   const menu = document.getElementById(`${dropId}`)
   const dropB = document.querySelector(`span.${dropBtn}`)
-  const dropButton = document.querySelector(`.${dropDown}`)
-  console.log(dropB)
 
-  dropButton.addEventListener('click', () => {
+  dropB.addEventListener('click', () => {
     if (dropB.classList.contains('fa-plus')) {
       menu.classList.add('show')
       dropB.classList.replace('fa-plus', 'fa-minus')
@@ -50,7 +47,7 @@ const showDropDown = (dropId, dropBtn, dropDown) => {
 
 (() => {
   showMenu('open-btn', 'nav-menu-container')('close-icon')
-  showDropDown('dropMenu', 'drop-icon', 'dropdown')
+  showDropDown('dropMenu', 'drop-icon')
 })()
 
 const navLinks = document.querySelectorAll(".nav-item a.nav-link");
