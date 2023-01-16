@@ -56,7 +56,7 @@ body {
 }
 
 form {
-    padding: 30px 25px;
+    padding: 20px 25px;
 }
 
 h2.form-title {
@@ -79,10 +79,11 @@ p.form-text {
 
 .form-container .field:not(.password-confirm) {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1em
 }
 
 .input-container small {
+    display: inline-block;
     margin-top: 0.95em;
     font-weight: 600;
     visibility: hidden;
@@ -115,11 +116,6 @@ p.form-text {
     width: 100%;
     box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
     color: var(--marine-blue);
-}
-
-
-.input-container input:focus {
-    outline: 2px solid #167ece;
 }
 
 .input-container.success input {
@@ -158,6 +154,10 @@ p.form-text {
 
 .form-container p.form-label>a {
     color: #167ece;
+}
+
+.form-container p.form-label>a:hover{
+    text-decoration: underline;
 }
 
 .form-container button.btn {
