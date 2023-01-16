@@ -12,6 +12,7 @@
 
 :root {
   --container-width-lg: 70%;
+  --container-width-md: 60%;
   --container-width-xm: 100%;
 
   --color-primary: linear-gradient(#3127d3, #080624dd, #08053add);
@@ -71,6 +72,12 @@ nav.app-navigation {
   align-items: center;
 }
 
+
+.nav-container .nav-menu-container.active {
+  transform: translateX(0%);
+  transition: all 500ms ease;
+}
+
 .nav-container .nav-logo {
   display: flex;
   justify-content: center;
@@ -127,7 +134,16 @@ nav.app-navigation {
   color: var(--color-white);
 }
 
-/* MANI STYLING */
+.nav-container .nav-menu-container span.close-icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2em;
+  color: #f75842;
+  cursor: pointer;
+}
+
+/* MAIN STYLING */
 
 h1.demo-title {
   font-size: 2.5em;
@@ -210,7 +226,22 @@ p.demo-text span.fa-piggy-bank {
   text-decoration: underline;
 }
 
+
+/***************************** MEDIA QUERIES ***************************/
 @media screen and (max-width:375px) {
+  .nav-container .nav-menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-200%);
+    padding: 8.5rem 30px;
+    width: 80% !important;
+    z-index: 99;
+    background: var(--color-primary) no-repeat;
+    height: 100%;
+    transition: all 500ms ease-in-out;
+  }
+
   .form-container {
     width: 350px
   }
@@ -222,7 +253,39 @@ p.demo-text span.fa-piggy-bank {
   }
 }
 
-@media screen and (min-width:768px) {
+@media screen and (max-width: 768px) {
+  .nav-container .nav-menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-200%);
+    padding: 8.5rem 30px;
+    width: 45%;
+    z-index: 99;
+    background: var(--color-primary) no-repeat;
+    height: 100%;
+    transition: all 500ms ease-in-out;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width:769px) {
+  .nav-container .nav-menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-200%);
+    padding: 8.5rem 30px;
+    width: 50%;
+    z-index: 99;
+    background: var(--color-primary) no-repeat;
+    height: 100%;
+    transition: all 500ms ease-in-out;
+  }
+
   h1.demo-title {
     font-size: 3em;
   }
@@ -251,7 +314,6 @@ p.demo-text span.fa-piggy-bank {
     font-size: 1.65em;
   }
 }
-
 
 .animation-container {
   display: flex;
