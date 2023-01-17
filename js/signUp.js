@@ -1,134 +1,111 @@
 import LocalStore from "./AppLocalStore.js"
-import { setErrorMessage, setSuccessMessage } from "./helper.js"
 
-const form = document.querySelector('form'),
-    uField = form.querySelector('.username'),
-    usernameInput = document.querySelector('#username'),
-    eField = form.querySelector('.email'),
-    emailInput = document.querySelector('#email'),
-    pField = form.querySelector('.password'),
-    passwordInput = document.querySelector('#password'),
-    cField = form.querySelector('.confirm-password'),
-    confirmInput = document.querySelector('#confirm-password')
+const form = document.querySelector('form');
+const username = document.getElementById('username');
+const email = document.getElementById('email');
+const passWord = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
 
-console.log(pField)
+const uField = document.querySelector('.username');
+const eField = document.querySelector('.email');
+const pField = document.querySelector('.password');
+const cField = document.querySelector('.confirm-password');
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const usernameValue = usernameInput.value.trim();
-    const emailValue = emailInput.value.trim();
-    const passwordValue = passwordInput.value.trim();
-    const confirmValue = confirmInput.value.trim();
+    (username.value == '') ? uField.classList.add('shake', 'error') : checkUsernameHandler(username, uField);
+    (email.value == '') ? eField.classList.add('shake', 'error') : checkEmailHandler(email, eField);
+    (passWord.value == '') ? pField.classList.add('shake', 'error') : checkPasswordHandler(passWord, pField);
+    (confirmPassword.value == '') ? cField.classList.add('shake', 'error') : confirmHandler(confirmPassword, passWord, cField);
 
 
+    setTimeout(() => {
+        uField.classList.remove('shake', 'error');
+        eField.classList.remove('shake', 'error');
+        pField.classList.remove('shake', 'error');
+        cField.classList.remove('shake', 'error');
+    }, 1500);
 
-    (usernameInput.value == '') ? uField.classList.add('error') : checkUsernameHandler(usernameValue, usernameInput);
-    (emailInput.value == '') ? eField.classList.add('error') : checkEmailHandler(emailValue, emailInput);
-    (passwordInput.value == '') ? pField.classList.add('error') : checkPasswordHandler(passwordValue, passwordInput);
-    (confirmInput.value == '') ? cField.classList.add('error') : confirmHandler(confirmValue, passwordValue, confirmInput);
-
-
-    usernameInput.addEventListener('keyup', () => { checkUsernameHandler(usernameValue, usernameInput) })
-    emailInput.addEventListener('keyup', () => { checkEmailHandler(emailValue, emailInput) })
-    passwordInput.addEventListener('keyup', () => { checkPasswordHandler(passwordValue, passwordInput) })
-    confirmInput.addEventListener('keyup', () => { confirmHandler(confirmValue, passwordValue, confirmInput) })
+    username.addEventListener('keyup', () => { checkUsernameHandler(username, uField) })
+    email.addEventListener('keyup', () => { checkEmailHandler(email, eField) })
+    passWord.addEventListener('keyup', () => { checkPasswordHandler(passWord, pField) })
+    confirmPassword.addEventListener('keyup', () => { confirmHandler(confirmPassword, passWord, cField) })
 })
 
-
 /**
- *
- * @param {string} password
- * @returns
+ * 
+ * @param {*} usernameInput 
+ * @param {*} userField 
  */
-const isPassword = (password) => {
-    return /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\#\$\.\%\*]+)(?=.*[a-zA-Z]).{8,16}$/g.test(password)
-}
+const checkUsernameHandler = (usernameInput, userField) => {
+    let pattern = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
+    if (!usernameInput.value.match(pattern)) {
+        userField.classList.add('error');
+        userField.classList.remove('valid');
 
-/**
- *
- * @param {string} email
- * @returns
- */
-const isEmail = (email) => {
-    return /^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)
-}
+        let errorTxt = document.querySelector('.error-txt');
+        (username.value != "") ? errorTxt.textContent = "Username can only start with an Uppercase followed by a Lowercase, a digit and Underscore" : errorTxt.textContent = "Username cannot be blanked"
 
-/**
- *
- * @param {} username
- * @returns
- */
-const isUsername = (username) => {
-    return /^[A-Za-z][A-Za-z0-9_]{7,29}$/.test(username)
-}
-
-/**
- *
- * @param {string} usernameValue
- * @param {string} usernameInput
- * @returns
- */
-const checkUsernameHandler = (usernameValue, usernameInput) => {
-    if (usernameValue === "") {
-        setErrorMessage(usernameInput, 'Username input cannot be blank')
-    } else if (!isUsername(usernameValue)) {
-        setErrorMessage(usernameInput, 'Username must only start an uppercase follow by, a lowercase, digits and  an underscore')
     } else {
-        setSuccessMessage(usernameInput)
+        userField.classList.remove('error');
+        userField.classList.add('valid');
     }
 }
 
 /**
  *
- * @param {string} emailValue
- * @param {string} emailInput
+ * @param {*} emailInput
+ * @param {*} emailField
  */
-const checkEmailHandler = (emailValue, emailInput) => {
-    if (emailValue === "") {
-        setErrorMessage(emailInput, 'Email input cannot be blank')
-    } else if (!isEmail(emailValue)) {
-        setErrorMessage(emailInput, 'Email is not valid')
+const checkEmailHandler = (emailInput, emailField) => {
+    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailInput.value.match(pattern)) {
+        emailField.classList.add('error');
+        emailField.classList.remove('valid');
+
+        let errorTxt = document.querySelector('.error-txt');
+        (email.value != "") ? errorTxt.textContent = "Enter a valid email address" : errorTxt.textContent = "Email cannot be blanked"
     } else {
-        setSuccessMessage(emailInput)
+        emailField.classList.remove('error');
+        emailField.classList.add('valid');
     }
 }
 
 /**
  *
- * @param {string} passwordValue
- * @param {string} passwordInput
+ * @param {*} passwordInput
+ * @param {*} passField
  */
-const checkPasswordHandler = (passwordValue, passwordInput) => {
-    if (passwordValue === "") {
-        setErrorMessage(passwordInput, 'Password input cannot be blank')
-    } else if (!isPassword(passwordValue)) {
-        setErrorMessage(passwordInput, 'Password must contains atleast a special character,a number,a lowercase & a uppercase')
+const checkPasswordHandler = (passwordInput, passField) => {
+    let pattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\%\_\@]+)(?=.*[a-zA-Z]).{8,16}$/;
+    if (!passwordInput.value.match(pattern)) {
+        passField.classList.add('error');
+        passField.classList.remove('valid');
+
+        let errorTxt = document.querySelector('.error-txt');
+        (passWord.value != "") ? errorTxt.textContent = "Password" : errorTxt.textContent = "Password cannot be blanked"
     } else {
-        setSuccessMessage(passwordInput)
+        passField.classList.remove('error');
+        passField.classList.add('valid');
     }
 }
 
 /**
  *
- * @param {string} confrimValue
- * @param {string} passwordValue
- * @param {string} confirmInput
+ * @param {*} confirmInput
+ * @param {*} passwordInput
+ * @param {*} conField
  */
-const confirmHandler = (confirmValue, passwordValue, confirmInput) => {
-    if (confirmValue === "") {
-        setErrorMessage(confirmInput, 'Confirm password input cannot be blank')
-    } else if (confirmValue !== passwordValue) {
-        setErrorMessage(confirmInput, 'Check confirm password it is not valid')
+const confirmHandler = (confirmInput, passwordInput, conField) => {
+    if (confirmInput.value !== passwordInput.value) {
+        conField.classList.add('error');
+        conField.classList.remove('valid');
+
+        let errorTxt = document.querySelector('.error-txt');
+        (confirmPassword.value != "") ? errorTxt.textContent = "Confirm password must be the same with password" : errorTxt.textContent = "Confirm password  cannot be blanked"
     } else {
-        setSuccessMessage(confirmInput)
+        conField.classList.remove('error');
+        conField.classList.add('valid');
     }
 }
-
-let regex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/g;
-let usernameOne = '!Young18';
-let usernameTwo = 'Young_109';
-
-let resultOne = regex.test(usernameOne),
-    resultTwo = regex.test(usernameTwo);
-console.log(resultOne)
-console.log(resultTwo)

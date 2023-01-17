@@ -77,9 +77,9 @@ p.form-text {
 }
 
 
-.form-container .field:not(.password-confirm) {
+.form-container .field {
     width: 100%;
-    margin-bottom: 1em
+    margin-bottom: 1em;
 }
 
 .form-container .field label {
@@ -90,61 +90,79 @@ p.form-text {
     font-weight: 600;
 }
 
-.field {
+.field .input-container {
     position: relative;
+    height: 40px;
+    width: 100%;
 }
 
 .input-container input {
     border: 2px solid #f0f0f0;
     background: var(--magnolia);
-    padding: 13px;
-    display: block;
-    border-radius: 10px;
     height: 100%;
+    padding-left: 13px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    height: 100%;
+    border: 2px solid #bfbfbf;
     width: 100%;
     box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
     color: var(--marine-blue);
 }
 
-.field.success input {
-    border-color: #00bf8e;
+
+.input-container span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.field.error input {
+.field.shake {
+    animation: shake 0.2s ease-in-out;
+}
+
+.field span.valid-icon {
+    color: #167ece;
+    right: 15px;
+}
+
+.field span.error-icon {
+    color: #f75842;
+    right: 15px;
+}
+
+form .field.shake input,
+form .field.error input {
     border-color: #f75842;
 }
 
-.field span {
-    padding: 10px;
-    position: absolute;
-    right: 10px;
-    top: 36px;
-    font-size: 1.3em;
+form .field input:focus,
+form .field.valid input {
+    border-color: #167ece;
 }
 
-.field.success span.success-icon {
-    color: #167ece;
-}
-
-.field.error span.error-icon {
-    color: #f75842;
-}
-
-.field .error-txt {
-    display: inline-block;
-    color: #dc3545;
-    margin-top: 0.95em;
-    font-weight: 600;
-}
-
-.field .success,
-.field .error {
+form .field .error {
     display: none;
 }
 
-.field.success .success,
-.field.error .error {
+form .field.shake .error,
+form .field.error .error {
     display: block;
+}
+
+form .field .valid {
+    display: none;
+}
+
+form .field.valid .valid {
+    display: block;
+}
+
+.field .error-txt {
+    color: #dc3545;
+    margin-top: 0.95em;
+    font-weight: 600;
 }
 
 .form-container p.form-label {
@@ -236,5 +254,23 @@ form p a:active {
     .main-container {
         width: 420px;
         max-width: 100%;
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        margin-left: 0px;
+    }
+
+    20%,
+    80% {
+        margin-left: -12px;
+    }
+
+    40%,
+    60% {
+        margin-left: 12px;
     }
 }

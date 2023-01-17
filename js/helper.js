@@ -24,29 +24,5 @@ const showMenu = (openId, menuId) => {
     }
 }
 
-/**
- *
- * @param {string} input
- * @param {string} message
- */
-const setErrorMessage = (input, message) => {
-    const formField = input.parentElement.parentElement;
-    const small = formField.querySelector('.error-txt')
-
-    small.innerHTML = `${message}`
-    formField.className = 'field error'
-}
-
-/**
- *
- * @param {string} input
- */
-const setSuccessMessage = (input) => {
-    const formField = input.parentElement.parentElement;
-    formField.className = 'field success'
-    console.log(formField)
-}
-
 
 export default showMenu
-export { setErrorMessage, setSuccessMessage }

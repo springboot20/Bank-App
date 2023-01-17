@@ -24,8 +24,8 @@
         <div class="field username">
           <label for="username">Username</label>
           <div class="input-container">
-            <input type="text/email" placeholder="Enter your username here..." id="username">
-            <span class="fa fa-circle-check success-icon success"></span>
+            <input type="text" placeholder="Enter your username here..." id="username" autocomplete="username">
+            <span class="fa fa-circle-check valid-icon valid"></span>
             <span class="error fa fa-exclamation-circle error-icon"></span>
           </div>
           <small class="error error-txt">Username cannot be blank</small>
@@ -34,8 +34,8 @@
         <div class="field email">
           <label for="email">Email</label>
           <div class="input-container">
-            <input type="email" placeholder="Enter your email address here..." id="email">
-            <span class="fa fa-circle-check success-icon success"></span>
+            <input type="email" placeholder="Enter your email address here..." id="email" autocomplete="username">
+            <span class="fa fa-circle-check valid-icon valid"></span>
             <span class="error fa fa-exclamation-circle error-icon"></span>
           </div>
           <small class="error error-txt">Email cannot be blank</small>
@@ -46,10 +46,10 @@
           <div class="input-container">
             <input type="password" placeholder="Enter your password here..." id="password"
               autocomplete="current-password">
-            <span class="fa fa-circle-check success-icon success"></span>
+            <span class="fa fa-circle-check valid-icon valid"></span>
             <span class="error fa fa-exclamation-circle error-icon"></span>
           </div>
-          <small class="error error-txt">password can not be blank</small>
+          <small class="error error-txt">password cannot be blank</small>
         </div>
 
         <div class="field confirm-password">
@@ -57,10 +57,10 @@
           <div class="input-container">
             <input type="password" placeholder="Re-enter your password here..." id="confirm-password"
               autocomplete="current-password">
-            <span class="fa fa-circle-check success-icon success"></span>
+            <span class="fa fa-circle-check valid-icon valid"></span>
             <span class="error fa fa-exclamation-circle error-icon"></span>
           </div>
-          <small class="error error-txt">Confirm password can not be blank</small>
+          <small class="error error-txt">Confirm password cannot be blank</small>
         </div>
         <button type="submit" class="btn sign-in-Btn">Sign up</button>
         <p class="">Already have an account ?
