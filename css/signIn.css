@@ -82,18 +82,6 @@ p.form-text {
     margin-bottom: 1em
 }
 
-.input-container small {
-    display: inline-block;
-    margin-top: 0.95em;
-    font-weight: 600;
-    visibility: hidden;
-}
-
-.input-container.error small {
-    color: #f75842;
-    visibility: visible;
-}
-
 .form-container .field label {
     display: inline-block;
     color: var(--marine-blue);
@@ -118,31 +106,45 @@ p.form-text {
     color: var(--marine-blue);
 }
 
-.input-container.success input {
+.field.success input {
     border-color: #00bf8e;
 }
 
-.input-container.error input {
+.field.error input {
     border-color: #f75842;
 }
 
-.input-container span {
+.field span {
     padding: 10px;
     position: absolute;
     right: 10px;
     top: 36px;
     font-size: 1.3em;
-    visibility: hidden;
 }
 
-.input-container.success span.fa-circle-check {
+.field.success span.success-icon {
     color: #167ece;
-    visibility: visible;
 }
 
-.input-container.error span.fa-exclamation-circle {
+.field.error span.error-icon {
     color: #f75842;
-    visibility: visible;
+}
+
+.field .error-txt {
+    display: inline-block;
+    color: #dc3545;
+    margin-top: 0.95em;
+    font-weight: 600;
+}
+
+.field .success,
+.field .error {
+    display: none;
+}
+
+.field.success .success,
+.field.error .error {
+    display: block;
 }
 
 .form-container p.form-label {
@@ -150,7 +152,6 @@ p.form-text {
     font-size: 1.25em;
     font-weight: 600;
 }
-
 
 .form-container p.form-label>a {
     color: #167ece;

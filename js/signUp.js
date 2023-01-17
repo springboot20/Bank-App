@@ -1,31 +1,39 @@
+import LocalStore from "./AppLocalStore.js"
 import { setErrorMessage, setSuccessMessage } from "./helper.js"
 
-const form = document.querySelector('form')
-const usernameInput = document.querySelector('#username')
-const emailInput = document.querySelector('#email')
-const passwordInput = document.querySelector('#password')
-const confirmInput = document.querySelector('#confirm-password')
+const form = document.querySelector('form'),
+    uField = form.querySelector('.username'),
+    usernameInput = document.querySelector('#username'),
+    eField = form.querySelector('.email'),
+    emailInput = document.querySelector('#email'),
+    pField = form.querySelector('.password'),
+    passwordInput = document.querySelector('#password'),
+    cField = form.querySelector('.confirm-password'),
+    confirmInput = document.querySelector('#confirm-password')
 
-
+console.log(pField)
 form.addEventListener('submit', (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    chekInputsHandler()
-})
-
-
-const chekInputsHandler = () => {
     const usernameValue = usernameInput.value.trim();
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
-    const confrimValue = confirmInput.value.trim();
+    const confirmValue = confirmInput.value.trim();
 
-    // Function calls
-    checkUsernameHandler(usernameValue, usernameInput)
-    checkEmailHandler(emailValue, emailInput)
-    checkPasswordHandler(passwordValue, passwordInput)
-    confirmHandler(confrimValue, passwordValue, confirmInput)
-}
+
+
+    (usernameInput.value == '') ? uField.classList.add('error') : checkUsernameHandler(usernameValue, usernameInput);
+    (emailInput.value == '') ? eField.classList.add('error') : checkEmailHandler(emailValue, emailInput);
+    (passwordInput.value == '') ? pField.classList.add('error') : checkPasswordHandler(passwordValue, passwordInput);
+    (confirmInput.value == '') ? cField.classList.add('error') : confirmHandler(confirmValue, passwordValue, confirmInput);
+
+
+    usernameInput.addEventListener('keyup', () => { checkUsernameHandler(usernameValue, usernameInput) })
+    emailInput.addEventListener('keyup', () => { checkEmailHandler(emailValue, emailInput) })
+    passwordInput.addEventListener('keyup', () => { checkPasswordHandler(passwordValue, passwordInput) })
+    confirmInput.addEventListener('keyup', () => { confirmHandler(confirmValue, passwordValue, confirmInput) })
+})
+
 
 /**
  *
@@ -47,12 +55,27 @@ const isEmail = (email) => {
 
 /**
  *
+ * @param {} username
+ * @returns
+ */
+const isUsername = (username) => {
+    return /^[A-Za-z][A-Za-z0-9_]{7,29}$/.test(username)
+}
+
+/**
+ *
  * @param {string} usernameValue
  * @param {string} usernameInput
  * @returns
  */
 const checkUsernameHandler = (usernameValue, usernameInput) => {
-    return (usernameValue === "") ? setErrorMessage(usernameInput, 'Username input cannot be blank') : setSuccessMessage(usernameInput)
+    if (usernameValue === "") {
+        setErrorMessage(usernameInput, 'Username input cannot be blank')
+    } else if (!isUsername(usernameValue)) {
+        setErrorMessage(usernameInput, 'Username must only start an uppercase follow by, a lowercase, digits and  an underscore')
+    } else {
+        setSuccessMessage(usernameInput)
+    }
 }
 
 /**
@@ -91,12 +114,21 @@ const checkPasswordHandler = (passwordValue, passwordInput) => {
  * @param {string} passwordValue
  * @param {string} confirmInput
  */
-const confirmHandler = (confrimValue, passwordValue, confirmInput) => {
-    if (confrimValue === "") {
+const confirmHandler = (confirmValue, passwordValue, confirmInput) => {
+    if (confirmValue === "") {
         setErrorMessage(confirmInput, 'Confirm password input cannot be blank')
-    } else if (confrimValue !== passwordValue) {
+    } else if (confirmValue !== passwordValue) {
         setErrorMessage(confirmInput, 'Check confirm password it is not valid')
     } else {
         setSuccessMessage(confirmInput)
     }
 }
+
+let regex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/g;
+let usernameOne = '!Young18';
+let usernameTwo = 'Young_109';
+
+let resultOne = regex.test(usernameOne),
+    resultTwo = regex.test(usernameTwo);
+console.log(resultOne)
+console.log(resultTwo)

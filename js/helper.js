@@ -30,20 +30,21 @@ const showMenu = (openId, menuId) => {
  * @param {string} message
  */
 const setErrorMessage = (input, message) => {
-    const formField = input.parentElement;
-    const small = formField.querySelector('small')
+    const formField = input.parentElement.parentElement;
+    const small = formField.querySelector('.error-txt')
 
-    small.innerText = `${message}`
-    formField.className = 'input-container error'
+    small.innerHTML = `${message}`
+    formField.className = 'field error'
 }
 
 /**
- * 
- * @param {string} input 
+ *
+ * @param {string} input
  */
 const setSuccessMessage = (input) => {
-    const formField = input.parentElement;
-    formField.className = 'input-container success'
+    const formField = input.parentElement.parentElement;
+    formField.className = 'field success'
+    console.log(formField)
 }
 
 
