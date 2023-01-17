@@ -36,7 +36,7 @@ body {
 }
 
 .main-container {
-    background: #ecf0f3;
+    background: hsl(231, 100%, 99%);
     border-radius: 1.4rem;
     box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
     overflow: hidden;
@@ -44,7 +44,7 @@ body {
 
 .header h1.main-title {
     color: var(--marine-blue);
-    font-size: 2.4em;
+    font-size: 2.15em;
     margin: 0;
     margin-left: 1rem;
 }
@@ -52,7 +52,7 @@ body {
 .header {
     background: #f7f7f7;
     box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.2);
-    padding: 20px 30px;
+    padding: 15px 25px;
 }
 
 form {
@@ -156,14 +156,14 @@ p.form-text {
     color: #167ece;
 }
 
-.form-container p.form-label>a:hover{
+.form-container p.form-label>a:hover {
     text-decoration: underline;
 }
 
 .form-container button.btn {
     width: 100%;
-    margin-top: 2.5rem;
     padding: 1rem;
+    margin-top: 10px;
     border-radius: 1.3rem;
     border: none;
     outline: none;
@@ -175,7 +175,8 @@ p.form-text {
 }
 
 .form-container button.btn:active {
-    transform: scale(0.9);
+    transform: scale(0.98);
+    font-size: 1.15em;
 }
 
 .form-container button.btn:hover {
@@ -187,12 +188,34 @@ p.form-text {
     font-size: 1.15em;
 }
 
+form p {
+    color: var(--cool-gray);
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 10px;
+}
 
+form p a {
+    color: #2c52ed;
+}
+
+form p a:hover {
+    text-decoration: underline;
+    color: #3127d3;
+}
+
+form p a:active {
+    color: #f75842;
+}
 
 @media screen and (max-width:425px) {
     .main-container {
         width: 450px;
         max-width: 85%;
+    }
+
+    p.form-text {
+        font-size: 0.75em;
     }
 }
 
@@ -210,7 +233,7 @@ p.form-text {
 
 @media screen and (min-width:769px) {
     .main-container {
-        width: 450px;
+        width: 420px;
         max-width: 100%;
     }
 }

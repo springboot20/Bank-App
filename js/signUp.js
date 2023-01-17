@@ -1,3 +1,4 @@
+import { setErrorMessage, setSuccessMessage } from "./helper.js"
 
 const form = document.querySelector('form')
 const usernameInput = document.querySelector('#username')
@@ -19,8 +20,47 @@ const chekInputsHandler = () => {
     const passwordValue = passwordInput.value.trim();
     const confrimValue = confirmInput.value.trim();
 
-    (usernameValue === "") ? setErrorMessage(usernameInput, 'Username input cannot be blank') : setSuccessMessage(usernameInput)
+    // Function calls
+    checkUsernameHandler(usernameValue, usernameInput)
+    checkEmailHandler(emailValue, emailInput)
+    checkPasswordHandler(passwordValue, passwordInput)
+    confirmHandler(confrimValue, passwordValue, confirmInput)
+}
 
+/**
+ *
+ * @param {string} password
+ * @returns
+ */
+const isPassword = (password) => {
+    return /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\#\$\.\%\*]+)(?=.*[a-zA-Z]).{8,16}$/g.test(password)
+}
+
+/**
+ *
+ * @param {string} email
+ * @returns
+ */
+const isEmail = (email) => {
+    return /^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)
+}
+
+/**
+ *
+ * @param {string} usernameValue
+ * @param {string} usernameInput
+ * @returns
+ */
+const checkUsernameHandler = (usernameValue, usernameInput) => {
+    return (usernameValue === "") ? setErrorMessage(usernameInput, 'Username input cannot be blank') : setSuccessMessage(usernameInput)
+}
+
+/**
+ *
+ * @param {string} emailValue
+ * @param {string} emailInput
+ */
+const checkEmailHandler = (emailValue, emailInput) => {
     if (emailValue === "") {
         setErrorMessage(emailInput, 'Email input cannot be blank')
     } else if (!isEmail(emailValue)) {
@@ -28,15 +68,30 @@ const chekInputsHandler = () => {
     } else {
         setSuccessMessage(emailInput)
     }
+}
 
+/**
+ *
+ * @param {string} passwordValue
+ * @param {string} passwordInput
+ */
+const checkPasswordHandler = (passwordValue, passwordInput) => {
     if (passwordValue === "") {
         setErrorMessage(passwordInput, 'Password input cannot be blank')
-    } else if (!(isPassword(passwordValue))) {
+    } else if (!isPassword(passwordValue)) {
         setErrorMessage(passwordInput, 'Password must contains atleast a special character,a number,a lowercase & a uppercase')
     } else {
         setSuccessMessage(passwordInput)
     }
+}
 
+/**
+ *
+ * @param {string} confrimValue
+ * @param {string} passwordValue
+ * @param {string} confirmInput
+ */
+const confirmHandler = (confrimValue, passwordValue, confirmInput) => {
     if (confrimValue === "") {
         setErrorMessage(confirmInput, 'Confirm password input cannot be blank')
     } else if (confrimValue !== passwordValue) {
@@ -44,25 +99,4 @@ const chekInputsHandler = () => {
     } else {
         setSuccessMessage(confirmInput)
     }
-}
-
-const setErrorMessage = (input, message) => {
-    const formField = input.parentElement;
-    const small = formField.querySelector('small')
-
-    small.innerText = `${message}`
-    formField.className = 'input-container error'
-}
-
-const setSuccessMessage = (input) => {
-    const formField = input.parentElement;
-    formField.className = 'input-container success'
-}
-
-const isPassword = (password) => {
-    return /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\#\$\.\%\*]+)(?=.*[a-zA-Z]).{8,16}$/g.test(password)
-}
-
-const isEmail = (email) => {
-    return /^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)
 }
