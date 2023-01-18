@@ -16,11 +16,11 @@ let getUsers = () => {
  * @param {*} passWord
  * @param {*} confirmPassword
  */
-let LocalStore = (username, email, passWord, confirmPassword) => {
+let LocalStore = (user, email, passWord, confirmPassword) => {
     const users = getUsers()
 
     let userLogin = {
-        username: username.value,
+        username: user.value,
         userEmail: email.value,
         userPassword: passWord.value,
         userConfirmPass: confirmPassword.value
@@ -30,3 +30,4 @@ let LocalStore = (username, email, passWord, confirmPassword) => {
     localStorage.setItem('user-login', JSON.stringify(users))
 }
 export default LocalStore
+export { getUsers }

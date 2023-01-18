@@ -27,6 +27,11 @@ form.addEventListener('submit', (event) => {
         cField.classList.remove('shake', 'error');
     }, 1500);
 
+    if (!uField.classList.contains('error') && !eField.classList.contains('error') && !pField.classList.contains('error') && !cField.classList.contains('error')) {
+        setTimeout(() => window.location.href = form.getAttribute('action'), 2500)
+        LocalStore(username, email, passWord, confirmPassword)
+    }
+
     username.addEventListener('keyup', () => { checkUsernameHandler(username, uField) })
     email.addEventListener('keyup', () => { checkEmailHandler(email, eField) })
     passWord.addEventListener('keyup', () => { checkPasswordHandler(passWord, pField) })
@@ -34,17 +39,17 @@ form.addEventListener('submit', (event) => {
 })
 
 /**
- * 
- * @param {*} usernameInput 
- * @param {*} userField 
+ *
+ * @param {*} usernameInput
+ * @param {*} userField
  */
 const checkUsernameHandler = (usernameInput, userField) => {
-    let pattern = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
+    let pattern = /^[A-Za-z][A-Za-z0-9_ ]{7,29}$/;
     if (!usernameInput.value.match(pattern)) {
         userField.classList.add('error');
         userField.classList.remove('valid');
 
-        let errorTxt = document.querySelector('.error-txt');
+        let errorTxt = userField.querySelector('.error-txt');
         (username.value != "") ? errorTxt.textContent = "Username can only start with an Uppercase followed by a Lowercase, a digit and Underscore" : errorTxt.textContent = "Username cannot be blanked"
 
     } else {
@@ -64,7 +69,7 @@ const checkEmailHandler = (emailInput, emailField) => {
         emailField.classList.add('error');
         emailField.classList.remove('valid');
 
-        let errorTxt = document.querySelector('.error-txt');
+        let errorTxt = emailField.querySelector('.error-txt');
         (email.value != "") ? errorTxt.textContent = "Enter a valid email address" : errorTxt.textContent = "Email cannot be blanked"
     } else {
         emailField.classList.remove('error');
@@ -83,7 +88,7 @@ const checkPasswordHandler = (passwordInput, passField) => {
         passField.classList.add('error');
         passField.classList.remove('valid');
 
-        let errorTxt = document.querySelector('.error-txt');
+        let errorTxt = passField.querySelector('.error-txt');
         (passWord.value != "") ? errorTxt.textContent = "Password" : errorTxt.textContent = "Password cannot be blanked"
     } else {
         passField.classList.remove('error');
@@ -102,8 +107,8 @@ const confirmHandler = (confirmInput, passwordInput, conField) => {
         conField.classList.add('error');
         conField.classList.remove('valid');
 
-        let errorTxt = document.querySelector('.error-txt');
-        (confirmPassword.value != "") ? errorTxt.textContent = "Confirm password must be the same with password" : errorTxt.textContent = "Confirm password  cannot be blanked"
+        let errorTxt = conField.querySelector('.error-txt');
+        (confirmInput.value !== passwordInput.value) ? errorTxt.textContent = "Confirm password must be the same with password" : errorTxt.textContent = "Confirm password cannot be blanked"
     } else {
         conField.classList.remove('error');
         conField.classList.add('valid');

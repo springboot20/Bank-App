@@ -454,14 +454,14 @@ nav.app-navigation {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width:940px) {
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
     left: 0;
     transform: translateX(0%);
     padding: 8.5rem 30px;
-    width: 300px;
+    width: 315px;
     z-index: 99;
     background: var(--color-primary) no-repeat;
     height: 100%;
@@ -470,9 +470,9 @@ nav.app-navigation {
 
   main.main {
     position: absolute;
-    left: 300px;
+    left: 315px;
     height: 100vh;
-    width: calc(100% - 300px);
+    width: calc(100% - 315px);
   }
 
   .nav-menu-container ul li {
@@ -490,7 +490,7 @@ nav.app-navigation {
   }
 
   .nav-container {
-    gap: 40rem;
+    gap: 36rem;
   }
 
   .log-out .log-out-container {

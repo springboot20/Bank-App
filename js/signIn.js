@@ -1,70 +1,70 @@
-import { setErrorMessage, setSuccessMessage } from "./helper.js"
+import { getUsers } from "./AppLocalStore.js";
 
 const form = document.querySelector('form')
-const emailInput = document.querySelector('#username')
-const passwordInput = document.querySelector('#password')
+const email = document.querySelector('#username')
+const password = document.querySelector('#password')
 
+const eField = document.querySelector('.email');
+const pField = document.querySelector('.password');
+
+let users = getUsers();
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    chekInputsHandler()
+    (email.value == '') ? eField.classList.add('shake', 'error') : checkEmailHandler(eField);
+    (password.value == '') ? pField.classList.add('shake', 'error') : checkPasswordHandler(pField);
+
+
+
+    setTimeout(() => {
+        eField.classList.remove('shake', 'error');
+        pField.classList.remove('shake', 'error');
+    }, 1500);
+
+    email.addEventListener('keyup', () => { checkEmailHandler(eField) });
+    password.addEventListener('keyup', () => { checkPasswordHandler(pField) });
+
+    if (!(eField.classList.contains('error')) && !(pField.classList.contains('error'))) {
+        setTimeout(() => window.location.href = form.getAttribute('action'), 2500);
+    }
 })
 
 
-const chekInputsHandler = () => {
-    const emailValue = emailInput.value.trim()
-    const passwordValue = passwordInput.value.trim()
-
-    // Function Calls
-    checkEmailHandler(emailValue, emailInput)
-    checkPasswordHandler(passwordValue, passwordInput)
-}
-
 /**
  *
- * @param {string} password
- * @returns
+ * @param {*} emailField
  */
-const isPassword = (password) => {
-    return /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\#\$\.\%\*]+)(?=.*[a-zA-Z]).{8,16}$/g.test(password)
-}
+const checkEmailHandler = (emailField) => {
+    let emailExist = users.some((user) => (user.userEmail === email.value));
+    if (!emailExist) {
+        emailField.classList.add('error');
+        emailField.classList.remove('valid');
 
-/**
- *
- * @param {string} email
- * @returns
- */
-const isEmail = (email) => {
-    return /^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)
-}
-
-/**
- *
- * @param {string} emailValue
- * @param {string} emailInput
- */
-const checkEmailHandler = (emailValue, emailInput) => {
-    if (emailValue === "") {
-        setErrorMessage(emailInput, 'Email input cannot be blank')
-    } else if (!isEmail(emailValue)) {
-        setErrorMessage(emailInput, 'Email is not valid')
+        let errorTxt = emailField.querySelector('.error-txt');
+        (email.value != "") ? errorTxt.textContent = "User email does not exist" : errorTxt.textContent = "Email cannot be blanked"
     } else {
-        setSuccessMessage(emailInput)
+        console.log(emailExist)
+        emailField.classList.remove('error');
+        emailField.classList.add('valid');
     }
 }
 
 /**
  *
- * @param {string} passwordValue
- * @param {string} passwordInput
+ * @param {*} passField
  */
-const checkPasswordHandler = (passwordValue, passwordInput) => {
-    if (passwordValue === "") {
-        setErrorMessage(passwordInput, 'Password input cannot be blank')
-    } else if (!isPassword(passwordValue)) {
-        setErrorMessage(passwordInput, 'Password must contains atleast a special character,a number,a lowercase & a uppercase')
+const checkPasswordHandler = (passField) => {
+    let passwordExist = users.some((user) => (user.userPassword === password.value));
+    if (!passwordExist) {
+        passField.classList.add('error');
+        passField.classList.remove('valid');
+
+        let errorTxt = passField.querySelector('.error-txt');
+        (password.value != "") ? errorTxt.textContent = "Password does not exit sign up to continue" : errorTxt.textContent = "Password cannot be blanked"
     } else {
-        setSuccessMessage(passwordInput)
+        console.log(passwordExist)
+        passField.classList.remove('error');
+        passField.classList.add('valid');
     }
 }

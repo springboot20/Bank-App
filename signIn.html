@@ -20,24 +20,24 @@
     <div class="form-container">
       <h2 class="form-title">Welcome Back</h2>
       <p class="form-text">Hello there, sign in to continue</p>
-      <form action="#">
+      <form action="./app.html">
         <div class="field email">
           <label for="username">Username or email</label>
           <div class="input-container">
-            <input type="email" placeholder="Enter your username or email" id="username">
-            <span class="fa fa-circle-check success-icon"></span>
-            <span class="fa fa-exclamation-circle error-icon"></span>
-            <small>Enter a valid email</small>
+            <input type="email" placeholder="Enter your email" id="username" autocomplete="email">
+            <span class="fa fa-circle-check valid-icon valid"></span>
+            <span class="error fa fa-exclamation-circle error-icon"></span>
           </div>
+          <small class="error error-txt">Email cannot be blanked</small>
         </div>
         <div class="field password">
           <label for="password">Password</label>
           <div class="input-container">
-            <input type="password" placeholder="Enter your password" id="password">
-            <span class="fa fa-circle-check success-icon"></span>
-            <span class="fa fa-exclamation-circle error-icon"></span>
-            <small>password can not be blank</small>
+            <input type="password" placeholder="Enter your password" id="password" autocomplete="current-password">
+            <span class="fa fa-circle-check valid-icon valid"></span>
+            <span class="error fa fa-exclamation-circle error-icon"></span>
           </div>
+          <small class="error error-txt">password cannot be blanked</small>
         </div>
         <p class="form-label">
           <a href="#">Forget Password ?</a>
