@@ -272,7 +272,6 @@ form p a:active {
 }
 
 @keyframes shake {
-
     0%,
     100% {
         margin-left: 0px;

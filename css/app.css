@@ -19,11 +19,19 @@
   --color-warning: #f7c94b;
   --color-danger: #f75842;
   --color-white: hsl(0 100% 100%);
+  --marine-blue: hsl(213, 96%, 18%);
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --lighter-color: #e0e0e7;
+  --light-blue: hsl(206, 94%, 87%);
 }
 
 body {
   height: 100vh;
-  background: #eeeeee;
+  background: hsl(231, 100%, 99%);
   font-family: Ubuntu;
   position: relative;
 }
@@ -516,6 +524,21 @@ nav.app-navigation {
   color: var(--color-white);
 }
 
+main.main .content-container {
+  transform: translateY(60px);
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.content-container .balance-card {
+  width: 25rem;
+  padding: 1rem;
+  background: var(--magnolia);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+}
+
 /******************************
     MEDIA QUERIES
 *******************************/
@@ -561,15 +584,16 @@ nav.app-navigation {
     transform: translateX(-200%);
     padding: 8.5rem 30px;
     width: 40%;
-    z-index: 1;
+    z-index: 99;
     background: var(--color-primary) no-repeat;
     height: 100%;
     transition: all 500ms ease-in-out;
   }
 
   .nav-container {
-    gap: 48rem;
+    gap: 45rem;
   }
+
 }
 
 @media screen and (min-width:830px) {
@@ -618,6 +642,10 @@ nav.app-navigation {
   .navigation-container .nav-menu-container>span.close-icon,
   .notification-container button>span.fas {
     display: none;
+  }
+
+  .main .content-container {
+    transform: translateY(30px);
   }
 }
 

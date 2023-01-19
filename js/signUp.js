@@ -6,6 +6,7 @@ const email = document.getElementById('email');
 const passWord = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
 const signButton = form.querySelector('button');
+
 const uField = document.querySelector('.username');
 const eField = document.querySelector('.email');
 const pField = document.querySelector('.password');
