@@ -14,6 +14,7 @@
     --color-primary: linear-gradient(#3127d3, #080624dd, #08053add);
     --color-success: #00bf8e;
     --color-warning: #f7c94b;
+    --color-secondary:#a29bfe;
     --color-danger: #f75842;
     --color-white: hsl(0 100% 100%);
     --marine-blue: hsl(213, 96%, 18%);
@@ -22,6 +23,7 @@
     --magnolia: hsl(217, 100%, 97%);
     --alabaster: hsl(231, 100%, 99%);
     --pastel-blue: hsl(228, 100%, 84%);
+    --lighter-color: #e0e0e7;
     --light-blue: hsl(206, 94%, 87%);
 }
 
@@ -180,17 +182,29 @@ form .field.valid .valid {
 }
 
 .form-container button.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 2rem;
     width: 100%;
     padding: 1rem;
     margin-top: 10px;
     border-radius: 1.3rem;
-    border: none;
     outline: none;
-    font-size: 1.35em;
+    border: 3px solid var(--color-secondary);
+    font-size: 1.15em;
     color: var(--color-white);
     background: #167ece;
     font-weight: 600;
     transition: all 0.2s ease;
+}
+
+.form-container button.btn:disabled,
+.form-container button.btn:disabled:hover {
+    background: #b0b0c0;
+    border: 3px solid var(--lighter-color);
+    cursor: text;
 }
 
 .form-container button.btn:active {
@@ -269,8 +283,41 @@ form p a:active {
         margin-left: -12px;
     }
 
+
     40%,
     60% {
         margin-left: 12px;
+    }
+}
+
+.loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid #48d1cc;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite;
+
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform:
+            rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

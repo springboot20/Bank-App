@@ -3,6 +3,7 @@ import { getUsers } from "./AppLocalStore.js";
 const form = document.querySelector('form')
 const email = document.querySelector('#username')
 const password = document.querySelector('#password')
+const signButton = form.querySelector('button');
 
 const eField = document.querySelector('.email');
 const pField = document.querySelector('.password');
@@ -26,7 +27,15 @@ form.addEventListener('submit', (event) => {
     password.addEventListener('keyup', () => { checkPasswordHandler(pField) });
 
     if (!(eField.classList.contains('error')) && !(pField.classList.contains('error'))) {
-        setTimeout(() => window.location.href = form.getAttribute('action'), 2500);
+
+        const span = document.createElement('span')
+        span.className = 'loader'
+
+
+        signButton.textContent = `Signing In..........`
+        signButton.disabled = true
+        signButton.append(span)
+        setTimeout(() => window.location.href = form.getAttribute('action'), 4500);
     }
 })
 

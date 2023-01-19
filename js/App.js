@@ -35,3 +35,7 @@ function linkAction() {
   navMenu.classList.remove("show");
 }
 navLinks.forEach((m) => m.addEventListener("click", linkAction));
+
+addEventListener('load', () => {
+  document.body.classList.add('loaded')
+})

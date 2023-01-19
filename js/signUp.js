@@ -5,7 +5,7 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const passWord = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
-
+const signButton = form.querySelector('button');
 const uField = document.querySelector('.username');
 const eField = document.querySelector('.email');
 const pField = document.querySelector('.password');
@@ -28,8 +28,14 @@ form.addEventListener('submit', (event) => {
     }, 1500);
 
     if (!uField.classList.contains('error') && !eField.classList.contains('error') && !pField.classList.contains('error') && !cField.classList.contains('error')) {
-        setTimeout(() => window.location.href = form.getAttribute('action'), 2500)
+        setTimeout(() => window.location.href = form.getAttribute('action'), 4500)
         LocalStore(username, email, passWord, confirmPassword)
+
+        const span = document.createElement('span')
+        span.className = 'loader'
+        signButton.textContent = `Signing Up..........`
+        signButton.disabled = true
+        signButton.append(span)
     }
 
     username.addEventListener('keyup', () => { checkUsernameHandler(username, uField) })
@@ -83,13 +89,13 @@ const checkEmailHandler = (emailInput, emailField) => {
  * @param {*} passField
  */
 const checkPasswordHandler = (passwordInput, passField) => {
-    let pattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\%\_\@]+)(?=.*[a-zA-Z]).{8,16}$/;
+    let pattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\_\@]+)(?=.*[a-zA-Z]).{8,16}$/;
     if (!passwordInput.value.match(pattern)) {
         passField.classList.add('error');
         passField.classList.remove('valid');
 
         let errorTxt = passField.querySelector('.error-txt');
-        (passWord.value != "") ? errorTxt.textContent = "Password" : errorTxt.textContent = "Password cannot be blanked"
+        (passWord.value != "") ? errorTxt.textContent = "Password can only contains digits, special characters e.g (-,_,@) , _lower and upper case and should not less than 8" : errorTxt.textContent = "Password cannot be blanked"
     } else {
         passField.classList.remove('error');
         passField.classList.add('valid');
