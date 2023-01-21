@@ -763,7 +763,7 @@ main.main .content-container {
 
   .main .content-container {
     transform: translateY(30px);
-    padding: 4rem;
+    padding: 1rem;
   }
 
   .card-container {
