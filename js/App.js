@@ -39,3 +39,31 @@ navLinks.forEach((m) => m.addEventListener("click", linkAction));
 addEventListener('load', () => {
   document.body.classList.add('loaded')
 })
+
+
+/**
+ * Amount and other transaction scopes
+ */
+
+const amountInDollar = document.querySelector('.amount-in-dollar');
+const amountInNaira = document.querySelector('.amount-in-naira');
+
+const formatDollar = new Intl.NumberFormat('en-US', {
+  currency: 'USD',
+  style: 'currency'
+})
+
+const formatNaira = new Intl.NumberFormat('en-NG', {
+  currency: 'NGN',
+  style: 'currency'
+})
+
+function formatNumber(amountInN,amountInD) {
+  let numberInN = formatNaira.format(parseInt(amountInN.innerHTML));
+  let numberInD = formatDollar.format(parseInt(amountInD.innerHTML));
+
+  amountInN.innerHTML = numberInN;
+  amountInD.innerHTML = numberInD;
+}
+
+formatNumber(amountInNaira, amountInDollar)

@@ -52,7 +52,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
   height: 35px;
   width: 35px;
   border: 3px solid #f3f3f3;
@@ -531,29 +531,125 @@ main.main .content-container {
   height: 100%;
 }
 
-.content-container .balance-card {
-  width: 25rem;
-  padding: 1rem;
-  background: var(--magnolia);
-  border-radius: 0.5rem;
-  box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+.card-container {
+  display: grid;
+  max-width: 1200px;
+  width: calc(100% - 2rem);
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+  gap: 1rem;
+}
+
+.card-container .balance-card {
+  position: relative;
+  width: 28rem;
+  height: 15rem;
+  padding: 20px 15px;
+  background: linear-gradient(45deg, rgba(2, 0, 36, 1)0%, rgba(0, 140, 177, 1)35%, rgba(0, 20, 125, 1)100%);
+  border-radius: 1em;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  border: 2px solid var(--lighter-color);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+}
+
+.card-container .balance-card .balance-label {
+  display: block;
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.card-container .balance-card .amount {
+  display: inline-block;
+  font-size: 1.3em;
+  color: var(--color-white);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.card-container .balance-card img {
+  position: absolute;
+  max-width: 100%;
+  height: 50px;
+  object-fit: contain;
+}
+
+.card-container .balance-card img.visa-image {
+  height: 20px;
+  bottom: 10px;
+  z-index: -1;
+}
+
+.card-container .balance-card img.master-image {
+  height: 50px;
+  bottom: 10px;
+  right: 14px;
+  z-index: -1;
+}
+
+.card-container .balance-card img.chip-image {
+  height: 50px;
+  margin-top: 60px;
+}
+
+.card-container button.add-btn {
+  position: absolute;
+  top: 10%;
+  right: 8px;
+  transform: translate(-8px, -10%);
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 140, 177, 1);
+  background: var(--color-white);
+  font-size: 1.45em;
+  cursor: pointer;
+  font-weight: 600;
+  color: #3127d3;
 }
 
 /******************************
     MEDIA QUERIES
 *******************************/
-@media screen and (max-width: 425px) {
+@media screen and (min-width: 400px) {
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
     left: 0;
     transform: translateX(-200%);
     padding: 8.5rem 30px;
-    width: 80% !important;
+    width: 400px;
     z-index: 1;
     background: var(--color-primary) no-repeat;
     height: 100%;
     transition: all 500ms ease-in-out;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card-container .balance-card {
+    width: 31rem;
+  }
+}
+
+
+@media screen and (min-width: 576px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    gap: 1rem;
+  }
+
+  .card-container .balance-card {
+    width: 30rem;
   }
 }
 
@@ -564,11 +660,12 @@ main.main .content-container {
     left: 0;
     transform: translateX(-200%);
     padding: 8.5rem 30px;
-    width: 40%;
     z-index: 99;
     background: var(--color-primary) no-repeat;
     height: 100%;
     transition: all 500ms ease-in-out;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
   }
 
   .nav-container {
@@ -588,33 +685,47 @@ main.main .content-container {
     background: var(--color-primary) no-repeat;
     height: 100%;
     transition: all 500ms ease-in-out;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
   }
 
   .nav-container {
     gap: 45rem;
   }
 
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-container .balance-card {
+    position: relative;
+    width: 30.5rem;
+    height: 15rem;
+    padding: 20px 15px;
+  }
 }
 
-@media screen and (min-width:830px) {
+@media screen and (min-width:800px) {
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
     left: 0;
     transform: translateX(0%);
     padding: 8.5rem 30px;
-    width: 315px;
+    width: 310px;
     z-index: 1;
     background: var(--color-primary) no-repeat;
     height: 100%;
     transition: all 500ms ease-in-out;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 
   main.main {
     position: absolute;
-    left: 315px;
+    left: 310px;
     height: 100vh;
-    width: calc(100% - 315px);
+    width: calc(100% - 310px);
   }
 
   .nav-menu-container ul li {
@@ -631,10 +742,6 @@ main.main .content-container {
     transition: all 500ms ease;
   }
 
-  .nav-container {
-    gap: 28rem;
-  }
-
   .log-out .log-out-container {
     width: 90%;
   }
@@ -644,13 +751,65 @@ main.main .content-container {
     display: none;
   }
 
+  .nav-container {
+    gap: 30rem;
+  }
+
   .main .content-container {
     transform: translateY(30px);
+    padding: 2.5rem;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-container .balance-card {
+    position: relative;
+    width: 22rem;
+    height: 15rem;
+    padding: 20px 15px;
+  }
+
+}
+
+@media screen and (min-width:1024px) {
+  .nav-container {
+    gap: 50rem;
+  }
+
+  .main .content-container {
+    transform: translateY(39px);
+    padding: 2.5rem;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-container .balance-card {
+    width: 31.5rem;
+    height: 16rem;
   }
 }
 
-@media screen and (min-width:1200px) {
+
+@media screen and (min-width:1400px) {
   .nav-container {
-    gap: 57rem;
+    gap: 85rem;
+  }
+
+  .main .content-container {
+    transform: translateY(39px);
+    padding: 2.5rem;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-container .balance-card {
+    width: 35rem;
+    height: 16rem;
   }
 }
