@@ -761,11 +761,11 @@ main.main .content-container {
     gap: 28rem;
   }
 
-  .main .content-container {
+ /* .main .content-container {
     transform: translateY(35px)!important;
     padding:0rem;
 	
-  }
+} */
 
   .card-container {
     grid-template-columns: repeat(2, 1fr);
