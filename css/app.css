@@ -712,7 +712,7 @@ main.main .content-container {
     left: 0;
     transform: translateX(0%);
     padding: 8.5rem 30px;
-    width: 310px;
+    width: 290px;
     z-index: 1;
     background: var(--color-primary) no-repeat;
     height: 100%;
@@ -723,9 +723,9 @@ main.main .content-container {
 
   main.main {
     position: absolute;
-    left: 310px;
+    left: 290px;
     height: 100vh;
-    width: calc(100% - 310px);
+    width: calc(100% - 290px);
   }
 
   .nav-menu-container ul li {
@@ -766,7 +766,7 @@ main.main .content-container {
 
   .card-container .balance-card {
     position: relative;
-    width: 22rem;
+    width: 23rem;
     height: 15rem;
     padding: 20px 15px;
   }
