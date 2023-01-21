@@ -526,7 +526,7 @@ nav.app-navigation {
 }
 
 main.main .content-container {
-  transform: translateY(80px);
+  transform: translateY(85px);
   /*padding: 2rem;*/
   width: 100%;
   height: 100%;
