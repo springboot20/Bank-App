@@ -769,6 +769,7 @@ main.main .content-container {
 
   .card-container {
     grid-template-columns: repeat(2, 1fr);
+	gap:0;
   }
 
   .card-container .balance-card {
