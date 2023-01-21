@@ -13,6 +13,7 @@
 :root {
   --container-width-lg: 70%;
   --container-width-xm: 100%;
+  --container-width-md: 80%;
 
   --color-primary: linear-gradient(#3127d3, #080624dd, #08053add);
   --color-success: #00bf8e;
@@ -706,6 +707,11 @@ main.main .content-container {
 }
 
 @media screen and (min-width:800px) {
+ .container {
+   width:var(--container-width-md);
+   margin:auto auto;
+  } 
+  
   .navigation-container .nav-menu-container {
     position: fixed;
     top: 0;
