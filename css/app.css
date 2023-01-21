@@ -762,7 +762,7 @@ main.main .content-container {
   }
 
   .main .content-container {
-    transform: translateY(30px);
+    transform: translateY(35px);
     padding:0rem;
 	
   }
