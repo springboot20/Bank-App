@@ -14,7 +14,7 @@
     --color-primary: linear-gradient(#3127d3, #080624dd, #08053add);
     --color-success: #00bf8e;
     --color-warning: #f7c94b;
-    --color-secondary:#a29bfe;
+    --color-secondary: #a29bfe;
     --color-danger: #f75842;
     --color-white: hsl(0 100% 100%);
     --marine-blue: hsl(213, 96%, 18%);
@@ -243,19 +243,30 @@ form p a:active {
 
 @media screen and (max-width:425px) {
     .main-container {
-        width: 450px;
-        max-width: 85%;
+        width: 350px;
+    }
+
+    h2.form-title {
+        font-size: 1.8em;
     }
 
     p.form-text {
+        margin-top: 0;
         font-size: 0.75em;
+    }
+
+    form {
+        padding: 15px 20px;
+    }
+
+    .form-container button.btn {
+        padding: 0.75rem;
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (min-width:426px) {
     .main-container {
-        width: 450px;
-        max-width: 100%;
+        width: 390px;
     }
 
     p.form-text {
@@ -272,6 +283,7 @@ form p a:active {
 }
 
 @keyframes shake {
+
     0%,
     100% {
         margin-left: 0px;
@@ -296,7 +308,6 @@ form p a:active {
     width: 20px;
     height: 20px;
     -webkit-animation: spin 2s linear infinite;
-
     animation: spin 2s linear infinite;
 }
 
