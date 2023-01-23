@@ -756,11 +756,23 @@ main.main .content-container {
 		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 		gap: 10px;
 	}
+
+	.card-container .balance-card {
+		width: 22rem;
+	}
 }
 
 @media screen and (min-width:1024px) {
+	.container {
+		padding: 0 1.5rem;
+	}
+
 	.nav-container {
 		gap: 50rem;
+	}
+
+	.card-container .balance-card {
+		width: 29rem;
 	}
 }
 
