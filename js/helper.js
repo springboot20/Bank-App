@@ -18,8 +18,8 @@ const showMenu = (openId, menuId) => {
 
     return (closeId) => {
         const closeBtn = document.querySelector(`.${closeId}`)
-        closeBtn.addEventListener('click', event => {
-            event.target.parentElement.classList.remove('active')
+        closeBtn.addEventListener('click',()=> {
+           menu.classList.remove('active')
         })
     }
 }

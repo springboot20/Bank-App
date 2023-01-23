@@ -37,7 +37,6 @@ body {
 	position: relative;
 }
 
-
 #loader {
 	position: fixed;
 	top: 0;
@@ -614,7 +613,7 @@ main.main .content-container {
 /******************************
     MEDIA QUERIES
 *******************************/
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 425px) {
 	.navigation-container .nav-menu-container {
 		position: fixed;
 		top: 0;
@@ -636,7 +635,7 @@ main.main .content-container {
 	}
 
 	.card-container .balance-card {
-		width: 31rem;
+		width: 35rem;
 	}
 }
 

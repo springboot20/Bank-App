@@ -1,8 +1,3 @@
-addEventListener('load', () => {
-	document.body.classList.add('loaded')
-})
-
-
 import showMenu from "./helper.js"
 
 /**
@@ -12,24 +7,24 @@ import showMenu from "./helper.js"
  */
 
 const showDropDown = (dropId, dropBtn) => {
-	const menu = document.getElementById(`${dropId}`)
-	const dropB = document.querySelector(`span.${dropBtn}`)
+	const menu = document.getElementById(`${dropId}`);
+	const dropB = document.querySelector(`span.${dropBtn}`);
 
 	dropB.addEventListener('click', () => {
 		if (dropB.classList.contains('fa-plus')) {
-			menu.classList.add('show')
-			dropB.classList.replace('fa-plus', 'fa-minus')
+			menu.classList.add('show');
+			dropB.classList.replace('fa-plus', 'fa-minus');
 		} else {
-			menu.classList.remove('show')
-			dropB.classList.replace('fa-minus', 'fa-plus')
+			menu.classList.remove('show');
+			dropB.classList.replace('fa-minus', 'fa-plus');
 		}
-	})
+	});
 }
 
 (() => {
-	showMenu('open-btn', 'nav-menu-container')('close-icon')
-	showDropDown('dropMenu', 'drop-icon')
-})()
+	showMenu('open-btn', 'nav-menu-container')('close-icon');
+	showDropDown('dropMenu', 'drop-icon');
+})();
 
 const navLinks = document.querySelectorAll(".nav-item a.nav-link");
 function linkAction() {
@@ -40,3 +35,7 @@ function linkAction() {
 	navMenu.classList.remove("show");
 }
 navLinks.forEach((m) => m.addEventListener("click", linkAction));
+
+addEventListener('load', () => {
+	document.body.classList.add('loaded');
+});

@@ -6,7 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="./img/piggy-bank.svg" type="image/x-icon" />
-	<script src="https://kit.fontawesome.com/643f8e5097.js" crossorigin="anonymous"></script>
+	<!--<script src="https://kit.fontawesome.com/643f8e5097.js" crossorigin="anonymous"></script>-->
+	<link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.min.css">
 	<link rel="stylesheet" href="./css/index.css">
 	<script defer type="module" src="./js/index.js"></script>
 	<title>Piggy Bank | Home Page</title>
@@ -14,70 +15,108 @@
 
 <body>
 
-	<div class="animation-container">
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
-
-	<nav class="app-navigation">
-		<div class="nav-container container">
-			<div class="nav-logo">
-				<span class="fa fa-piggy-bank"></span>
-				<span class="logo-name">Piggy Bank</span>
+	<section class="section-hero">
+		<nav class="app-navigation">
+			<div class="nav-container container">
+				<a class="nav-logo">
+					<span class="fa fa-piggy-bank"></span>
+					<span class="logo-name">Piggy Bank</span>
+				</a>
+				<div class="nav-menu-container">
+					<ul class="nav-menu" id="menu" aria-labelledby="menu">
+						<li class="nav-item">
+							<a href="#" class="nav-link active-link dropBtn">
+								<span class="link-name">Home</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<span class="link-name">Products</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<span class="link-name">Solutions</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<span class="link-name">Developer</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link dropBtn">
+								<span class="link-name">Pricing</span>
+							</a>
+						</li>
+					</ul>
+					<span class="fas fa-xmark close-icon"></span>
+				</div>
+				<div class="nav-action">
+					<a href="./signIn.html" class="btn sign">Sign In</a>
+					<a href="signup.html" class="btn btn-primary">Sign Up</a>
+					<div class="notification-container">
+						<span class="fas fa-bars" id="open-btn"></span>
+					</div>
+				</div>
 			</div>
+		</nav>
 
-			<div class="nav-menu-container">
-				<ul class="nav-menu" id="menu" aria-labelledby="menu">
-					<li class="nav-item">
-						<a href="#" class="nav-link active-link dropBtn">
-							<span class="fas fa-home menu-icon"></span>
-							<span class="link-name">Home</span>
-						</a>
-					</li>
-				</ul>
-				<span class="fas fa-xmark close-icon"></span>
-			</div>
-
-			<div class="notification-container">
-				<span class="fas fa-bell notification-icon"></span>
-				<button type="button" class="btn">
-					<span class="fas fa-bars" id="open-btn"></span>
-				</button>
+		<div class="container">
+			<div class="hero-container">
+				<div class="hero-content">
+					<h1 class="heading">
+						Design is intelligence made visible.
+					</h1>
+					<p class="paragraph">
+						Accepts payments and move money globally with Stripe's powerful APIs and software solutions designed to help
+						you capture more revenue.
+					</p>
+					<a href="#" class="btn btn-primary">Start Now</a>
+					<a href="#" class="btn btn-outline">Contact Sales</a>
+				</div>
+				<div class="hero-image">
+					<img src="./img/piggy-01.png" alt="piggy image">
+				</div>
 			</div>
 		</div>
-	</nav>
+	</section>
 
-	<main class="App-demo" id="root">
-		<div class="app-demo-container">
-			<h1 class="demo-title">Welcome</h1>
-			<p class="demo-text">
-				<span class="light">Manage your expenses</span><br>
-				<span class="bold">seamlessly & intuitively with our</span>
-				<span class="fa fa-piggy-bank"></span>
-				<span class="light-b">Piggy Bank App</span>
-			</p>
-			<div class="form-container">
-				<form action="./sigin.html" faid="form">
-					<div class="form-field">
-						<button type="button" class="btn google">
-							<span class="fab fa-google"></span>
-							<span class="btn-text">Sign in with Google</span>
-						</button>
+	<section id="features">
+		<div class="container">
+			<div class="features-container">
+				<div class="features-item">
+					<div>
+						<img src="./img/piggy-bank.svg" alt="image">
 					</div>
-					<div class="form-field">
-						<button type="button" class="btn create">
-							<span class="btn-text">Create an account</span>
-						</button>
+					<div class="features-item-content">
+						<h3 class="features-item-heading">
+							Optimize your revenue
+						</h3>
+						<p class="paragraph">
+							Protect yourself from fraud and increase authorization rates on every payment using our machines learnin
+							and data from millions of businesses.
+						</p>
+						<a href="#" class="btn-secondary">Read more</a>
 					</div>
-				</form>
-				<p class="form-label">Already have an account ? <a href="./signIn.html">Sign In</a></p>
+				</div>
+				<div class="features-item">
+					<div>
+						<img src="./img/piggy-bank.svg" alt="image">
+					</div>
+					<div class="features-item-content">
+						<h3 class="features-item-heading">Payments for any business</h3>
+						<p class="paragraph">
+							From ecommerce stores, to subscription businesses, to platforms and marketplaces, we offer a complete
+							stack of all your payments needs across channels.
+						</p>
+						<a href="#" class="btn-secondary">Read more</a>
+					</div>
+				</div>
 			</div>
 		</div>
-	</main>
+	</section>
+
 </body>
 
 </html>
