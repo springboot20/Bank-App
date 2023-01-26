@@ -16,8 +16,6 @@ form.addEventListener('submit', (event) => {
     (email.value == '') ? eField.classList.add('shake', 'error') : checkEmailHandler(eField);
     (password.value == '') ? pField.classList.add('shake', 'error') : checkPasswordHandler(pField);
 
-
-
     setTimeout(() => {
         eField.classList.remove('shake', 'error');
         pField.classList.remove('shake', 'error');
@@ -29,16 +27,13 @@ form.addEventListener('submit', (event) => {
     if (!(eField.classList.contains('error')) && !(pField.classList.contains('error'))) {
 
         const span = document.createElement('span')
-        span.className = 'loader'
-
-
-        signButton.textContent = `Signing In..........`
-        signButton.disabled = true
-        signButton.append(span)
+        span.className = 'loader';
+        signButton.textContent = `Signing In..........`;
+        signButton.disabled = true;
+        signButton.append(span);
         setTimeout(() => window.location.href = form.getAttribute('action'), 4500);
     }
 })
-
 
 /**
  *

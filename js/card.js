@@ -1,29 +1,33 @@
 import showMenu from "./helper.js"
+import { CardStore, getUserCards } from "./AppLocalStore.js";
+import { ShowDropDown } from "./helper.js";
 
+
+const form = document.querySelector('form');
+const cardNumberInput = document.querySelector('#number');
+const cardNameInput = document.querySelector('#name');
+const cardExpireInput = document.querySelector('#expire');
+const cardSecureInput = document.querySelector('#security');
+
+console.log(cardNameInput)
+
+form.addEventListener('submit', (event) => {
+	event.preventDefault()
+
+	const cards = getUserCards()
+
+});
+console.log(JSON.parse(localStorage.getItem('user-login')));
+CardStore(cardNameInput, cardNumberInput, cardExpireInput, cardSecureInput)
+
+console.log(cardNumberInput)
 /**
- *
- * @param {*} dropId
- * @param {*} dropBtn
+ * Function Calls import from Helper js
  */
-
-const showDropDown = (dropId, dropBtn) => {
-	const menu = document.getElementById(`${dropId}`);
-	const dropB = document.querySelector(`span.${dropBtn}`);
-
-	dropB.addEventListener('click', () => {
-		if (dropB.classList.contains('fa-plus')) {
-			menu.classList.add('show');
-			dropB.classList.replace('fa-plus', 'fa-minus');
-		} else {
-			menu.classList.remove('show');
-			dropB.classList.replace('fa-minus', 'fa-plus');
-		}
-	});
-}
 
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
-	showDropDown('dropMenu', 'drop-icon');
+	ShowDropDown('dropMenu', 'drop-icon');
 })();
 
 const navLinks = document.querySelectorAll(".nav-item a.nav-link");
@@ -39,3 +43,30 @@ navLinks.forEach((m) => m.addEventListener("click", linkAction));
 addEventListener('load', () => {
 	document.body.classList.add('loaded');
 });
+
+
+/**
+ * Card Script Scope
+ */
+
+const showCardForm = (btnId, formId, overlayId) => {
+	const cardBtn = document.querySelector(`.${btnId}`);
+	const cardForm = document.querySelector(`.${formId}`);
+	const overlay = document.querySelector(`.${overlayId}`);
+
+	console.log(cardBtn)
+	cardBtn.addEventListener('click', () => {
+		cardForm.classList.add('active');
+		overlay.classList.replace('hidden', 'active');
+	})
+
+	return (closeId) => {
+		const closeIcon = document.querySelector(`#${closeId}`);
+		closeIcon.addEventListener('click', () => {
+			cardForm.classList.remove('active');
+			overlay.classList.replace('active', 'hidden');
+		})
+	}
+}
+
+showCardForm('add-card', 'card-form', 'overlay')('close-icon');

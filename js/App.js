@@ -58,7 +58,7 @@ const formatNaira = new Intl.NumberFormat('en-NG', {
   style: 'currency'
 })
 
-function formatNumber(amountInN,amountInD) {
+function formatNumber(amountInN, amountInD) {
   let numberInN = formatNaira.format(parseInt(amountInN.innerHTML));
   let numberInD = formatDollar.format(parseInt(amountInD.innerHTML));
 

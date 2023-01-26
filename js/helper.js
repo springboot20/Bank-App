@@ -24,5 +24,20 @@ const showMenu = (openId, menuId) => {
     }
 }
 
+const ShowDropDown = (dropId, dropBtn) => {
+    const menu = document.getElementById(`${dropId}`);
+    const dropB = document.querySelector(`span.${dropBtn}`);
+
+    dropB.addEventListener('click', () => {
+        if (dropB.classList.contains('fa-plus')) {
+            menu.classList.add('show');
+            dropB.classList.replace('fa-plus', 'fa-minus');
+        } else {
+            menu.classList.remove('show');
+            dropB.classList.replace('fa-minus', 'fa-plus');
+        }
+    });
+}
 
 export default showMenu
+export {ShowDropDown}

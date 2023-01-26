@@ -20,7 +20,6 @@ form.addEventListener('submit', (event) => {
     (passWord.value == '') ? pField.classList.add('shake', 'error') : checkPasswordHandler(passWord, pField);
     (confirmPassword.value == '') ? cField.classList.add('shake', 'error') : confirmHandler(confirmPassword, passWord, cField);
 
-
     setTimeout(() => {
         uField.classList.remove('shake', 'error');
         eField.classList.remove('shake', 'error');
@@ -29,14 +28,14 @@ form.addEventListener('submit', (event) => {
     }, 1500);
 
     if (!uField.classList.contains('error') && !eField.classList.contains('error') && !pField.classList.contains('error') && !cField.classList.contains('error')) {
-        setTimeout(() => window.location.href = form.getAttribute('action'), 4500)
-        LocalStore(username, email, passWord, confirmPassword)
+        setTimeout(() => window.location.href = form.getAttribute('action'), 4500);
+        LocalStore(username, email, passWord, confirmPassword);
 
-        const span = document.createElement('span')
-        span.className = 'loader'
-        signButton.textContent = `Signing Up..........`
-        signButton.disabled = true
-        signButton.append(span)
+        const span = document.createElement('span');
+        span.className = 'loader';
+        signButton.textContent = `Signing Up..........`;
+        signButton.disabled = true;
+        signButton.append(span);
     }
 
     username.addEventListener('keyup', () => { checkUsernameHandler(username, uField) })
