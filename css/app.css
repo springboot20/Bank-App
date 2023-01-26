@@ -665,7 +665,7 @@ main.main .content-container {
 	}
 
 	.nav-container {
-		gap: 43rem;
+		gap: 45rem;
 	}
 
 	.card-container {
@@ -728,6 +728,10 @@ main.main .content-container {
 	.notification-container button>span.fas {
 		display: none;
 	}
+
+	.nav-container {
+		gap: 29rem;
+	}
 }
 
 @media (min-width:992px) {
@@ -736,7 +740,7 @@ main.main .content-container {
 	}
 
 	.nav-container {
-		gap: 50rem;
+		gap: 44rem;
 	}
 
 	.card-container {
@@ -753,7 +757,7 @@ main.main .content-container {
 
 @media (min-width:1400px) {
 	.nav-container {
-		gap: 85rem;
+		gap: 77rem;
 	}
 
 	.card-container {

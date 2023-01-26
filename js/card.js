@@ -17,10 +17,7 @@ form.addEventListener('submit', (event) => {
 	const cards = getUserCards()
 
 });
-console.log(JSON.parse(localStorage.getItem('user-login')));
-CardStore(cardNameInput, cardNumberInput, cardExpireInput, cardSecureInput)
 
-console.log(cardNumberInput)
 /**
  * Function Calls import from Helper js
  */
