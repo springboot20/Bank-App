@@ -13,14 +13,21 @@ body {
 	--light-blue: hsl(206, 94%, 87%);
 }
 
+.cards {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 10px;
+}
+
 .credit-card {
 	position: relative;
-	width: 30rem;
+	width: 33rem;
 	height: 17rem;
 	padding: 20px 15px;
-	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url(../img/background.jpg);
+	background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../img/background.jpg);
+	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: contain;
+	background-size: cover;
 	border-radius: 1em;
 	box-shadow: 0 0 10px rgb(0 0 0 / 30%);
 	border: 2px solid var(--lighter-color);
@@ -263,11 +270,15 @@ form {
 	}
 }
 
-@media (min-width:769px) {
+@media (min-width:768px) {
 	.cards {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 1rem;
+	}
+
+	.credit-card {
+		width: 29rem;
 	}
 
 	.card-form {
@@ -276,7 +287,6 @@ form {
 		background: hsl(231, 100%, 99%);
 		border-radius: 1.4rem;
 		box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
-		z-index: 99;
 		transition: all 700ms ease-in-out;
 	}
 
