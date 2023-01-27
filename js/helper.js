@@ -18,8 +18,8 @@ const showMenu = (openId, menuId) => {
 
     return (closeId) => {
         const closeBtn = document.querySelector(`.${closeId}`)
-        closeBtn.addEventListener('click',()=> {
-           menu.classList.remove('active')
+        closeBtn.addEventListener('click', () => {
+            menu.classList.remove('active')
         })
     }
 }
@@ -39,5 +39,24 @@ const ShowDropDown = (dropId, dropBtn) => {
     });
 }
 
+
+const ShowCardForm = (btnId, formId, overlayId) => {
+    const cardBtn = document.querySelector(`.${btnId}`);
+    const cardForm = document.querySelector(`.${formId}`);
+    const overlay = document.querySelector(`.${overlayId}`);
+
+    cardBtn.addEventListener('click', () => {
+        cardForm.classList.add('active');
+        overlay.classList.replace('hidden', 'active');
+    })
+
+    return (closeId) => {
+        const closeIcon = document.querySelector(`#${closeId}`);
+        closeIcon.addEventListener('click', () => {
+            cardForm.classList.remove('active');
+            overlay.classList.replace('active', 'hidden');
+        })
+    }
+}
 export default showMenu
-export {ShowDropDown}
+export { ShowDropDown ,ShowCardForm}

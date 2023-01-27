@@ -27,26 +27,26 @@ let LocalStore = (user, email, passWord, confirmPassword) => {
 
 let getUserCards = () => {
     let cardsArray;
-    (localStorage.getItem('user-cards' === null)) ? cardsArray = [] : cardsArray = JSON.parse(localStorage.getItem('user-cards'));
+    (localStorage.getItem('user-cards') === null) ? cardsArray = [] : cardsArray = JSON.parse(localStorage.getItem('user-cards'));
     return cardsArray;
 }
 
 /**
  *
- * @param {*} cardName
- * @param {*} cardNumber
- * @param {*} cardCvv
- * @param {*} cardExpireThrough
+ * @param {*} number
+ * @param {*} name
+ * @param {*} expire
+ * @param {*} secure
  */
 
-let CardStore = (cardName, cardNumber, cardCvv, cardExpireThrough) => {
+let CardStore = (number, name, expire, secure) => {
     const cards = getUserCards();
 
     let cardsDetail = {
-        cardname: cardName.value,
-        cardnumber: cardNumber.value,
-        cardcvv: cardCvv.value,
-        cardexpire: cardExpireThrough.value
+        cardnumber: number.value,
+        cardname: name.value,
+        cardexpire: expire.value,
+        cardSecure: secure.value
     }
 
     cards.push(cardsDetail);

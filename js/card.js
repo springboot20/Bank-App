@@ -1,21 +1,20 @@
 import showMenu from "./helper.js"
 import { CardStore, getUserCards } from "./AppLocalStore.js";
-import { ShowDropDown } from "./helper.js";
+import { ShowDropDown, ShowCardForm } from "./helper.js";
 
 
 const form = document.querySelector('form');
-const cardNumberInput = document.querySelector('#number');
-const cardNameInput = document.querySelector('#name');
-const cardExpireInput = document.querySelector('#expire');
-const cardSecureInput = document.querySelector('#security');
+const number = document.querySelector('#number');
+const name = document.querySelector('#name');
+const expire = document.querySelector('#expire');
+const secure = document.querySelector('#security');
 
-console.log(cardNameInput)
 
 form.addEventListener('submit', (event) => {
 	event.preventDefault()
 
-	const cards = getUserCards()
 
+	CardStore(number, name, expire, secure)
 });
 
 /**
@@ -25,6 +24,7 @@ form.addEventListener('submit', (event) => {
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
 	ShowDropDown('dropMenu', 'drop-icon');
+	ShowCardForm('add-card', 'card-form', 'overlay')('close-icon');
 })();
 
 const navLinks = document.querySelectorAll(".nav-item a.nav-link");
@@ -42,28 +42,45 @@ addEventListener('load', () => {
 });
 
 
-/**
- * Card Script Scope
- */
+const cards = getUserCards();
+const cardContainer = document.querySelector('.cards');
+const creditCard = cardContainer.querySelectorAll('.credit-card');
+console.log(creditCard)
 
-const showCardForm = (btnId, formId, overlayId) => {
-	const cardBtn = document.querySelector(`.${btnId}`);
-	const cardForm = document.querySelector(`.${formId}`);
-	const overlay = document.querySelector(`.${overlayId}`);
+let result = '';
 
-	console.log(cardBtn)
-	cardBtn.addEventListener('click', () => {
-		cardForm.classList.add('active');
-		overlay.classList.replace('hidden', 'active');
+const appendNewCards = () => {
+	cards.forEach((card, index) => {
+		result += `
+				<div class="credit-card">
+					<div class="card-content">
+						<img src="./img/chip-1.svg" alt="" class="chip-image">
+						<div class="card-details">
+							<div class="credit-number">
+								<span class="number-label">Credit Number</span>
+								<span class="number">${card.number}</span>
+							</div>
+							<div class="credit-valid">
+								<div class="credit-name">
+									<span class="name-label">Credit Name</span>
+									<span class="name">${card.name}</span>
+								</div>
+								<div class="card-exp">
+									<span class="expire-label">Valid Through</span>
+									<span class="expire">${card.expire}</span>
+								</div>
+							</div>
+						</div>
+						<img src="img/visa-10.svg" alt="" class="visa-image">
+						<img src="img/mastercard-2.svg" alt="" class="master-image">
+					</div>
+					<div class="edit-buttons">
+						<button type="button" id="edit-btn"><span class="fa fa-edit"></span></button>
+						<button type="button" class="delete-btn" id="delete-btn"><span class="fa fa-trash-can"></span></button>
+					</div>
+				</div>
+			`;
 	})
-
-	return (closeId) => {
-		const closeIcon = document.querySelector(`#${closeId}`);
-		closeIcon.addEventListener('click', () => {
-			cardForm.classList.remove('active');
-			overlay.classList.replace('active', 'hidden');
-		})
-	}
+	cardContainer.innerHTML = result;
 }
-
-showCardForm('add-card', 'card-form', 'overlay')('close-icon');
+appendNewCards();

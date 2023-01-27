@@ -158,40 +158,42 @@
 					</div>
 				</div>
 			</div>
-			<div class="card-form">
-				<form action="#" id="form">
-					<div class="field card-number">
-						<div class="form-control">
-							<label for="card-number">Card Number</label>
-							<input type="text" name="card-number" id="number" placeholder="1234 5678 7890 4288">
-						</div>
-						<small class="error error-txt">password cannot be blanked</small>
-					</div>
-					<div class="field card-name">
-						<div class="form-control">
-							<label for="card-name">Name on Card</label>
-							<input type="text" name="card-name" id="name" placeholder="yunus abbas opeyemi">
-						</div>
-						<small class="error error-txt">password cannot be blanked</small>
-					</div>
-					<div class="flex-field">
-						<div class="field expire">
+			<div class="container form-container">
+				<div class="card-form">
+					<form action="#" id="form">
+						<div class="field card-number">
 							<div class="form-control">
-								<label for="expire">Expiry date</label>
-								<input type="text" name="expire" id="expire" placeholder="07/31">
+								<label for="card-number">Card Number</label>
+								<input type="text" name="card-number" id="number" placeholder="1234 5678 7890 4288">
 							</div>
 							<small class="error error-txt">password cannot be blanked</small>
 						</div>
-						<div class="field security-code">
+						<div class="field card-name">
 							<div class="form-control">
-								<label for="security-code">Security code</label>
-								<input type="text" name="security-code" id="security" placeholder="****">
+								<label for="card-name">Name on Card</label>
+								<input type="text" name="card-name" id="name" placeholder="yunus abbas opeyemi">
 							</div>
 							<small class="error error-txt">password cannot be blanked</small>
 						</div>
-					</div>
-					<button type="submit" class="btn" id="add-card-btn">Save Card</button>
-				</form>
+						<div class="flex-field">
+							<div class="field expire">
+								<div class="form-control">
+									<label for="expire">Expiry date</label>
+									<input type="text" name="expire" id="expire" placeholder="07/31">
+								</div>
+								<small class="error error-txt">password cannot be blanked</small>
+							</div>
+							<div class="field security-code">
+								<div class="form-control">
+									<label for="security-code">Security code</label>
+									<input type="text" name="security-code" id="security" placeholder="****">
+								</div>
+								<small class="error error-txt">password cannot be blanked</small>
+							</div>
+						</div>
+						<button type="submit" class="btn" id="add-card-btn">Save Card</button>
+					</form>
+				</div>
 			</div>
 			<div class="overlay hidden">
 				<span class="fa fa-xmark" id="close-icon"></span>
