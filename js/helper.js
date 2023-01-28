@@ -40,23 +40,18 @@ const ShowDropDown = (dropId, dropBtn) => {
 }
 
 
-const ShowCardForm = (btnId, formId, overlayId) => {
+const ShowCardForm = (btnId) => {
     const cardBtn = document.querySelector(`.${btnId}`);
-    const cardForm = document.querySelector(`.${formId}`);
-    const overlay = document.querySelector(`.${overlayId}`);
-
     cardBtn.addEventListener('click', () => {
-        cardForm.classList.add('active');
-        overlay.classList.replace('hidden', 'active');
+        window.location.href = './cardForm.html'
     })
-
-    return (closeId) => {
-        const closeIcon = document.querySelector(`#${closeId}`);
-        closeIcon.addEventListener('click', () => {
-            cardForm.classList.remove('active');
-            overlay.classList.replace('active', 'hidden');
-        })
-    }
 }
+
+/**
+ * DOM MANIPULATION SCOPES
+ */
+const creditCard = document.createElement('div');
+creditCard.classList.add('credit-card');
+
 export default showMenu
-export { ShowDropDown ,ShowCardForm}
+export { ShowDropDown, ShowCardForm, creditCard }

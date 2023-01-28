@@ -1,21 +1,6 @@
-import showMenu from "./helper.js"
-import { CardStore, getUserCards } from "./AppLocalStore.js";
-import { ShowDropDown, ShowCardForm } from "./helper.js";
-
-
-const form = document.querySelector('form');
-const number = document.querySelector('#number');
-const name = document.querySelector('#name');
-const expire = document.querySelector('#expire');
-const secure = document.querySelector('#security');
-
-
-form.addEventListener('submit', (event) => {
-	event.preventDefault()
-
-
-	CardStore(number, name, expire, secure)
-});
+import showMenu, { ShowCardForm } from "./helper.js";
+import { getUserCards } from "./AppLocalStore.js";
+import { ShowDropDown } from "./helper.js";
 
 /**
  * Function Calls import from Helper js
@@ -24,7 +9,7 @@ form.addEventListener('submit', (event) => {
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
 	ShowDropDown('dropMenu', 'drop-icon');
-	ShowCardForm('add-card', 'card-form', 'overlay')('close-icon');
+	ShowCardForm('add-card')
 })();
 
 const navLinks = document.querySelectorAll(".nav-item a.nav-link");
@@ -39,48 +24,62 @@ navLinks.forEach((m) => m.addEventListener("click", linkAction));
 
 addEventListener('load', () => {
 	document.body.classList.add('loaded');
+	setTimeout(() => appendNewCards(), 7000)
 });
 
 
-const cards = getUserCards();
 const cardContainer = document.querySelector('.cards');
-const creditCard = cardContainer.querySelectorAll('.credit-card');
-console.log(creditCard)
-
-let result = '';
-
 const appendNewCards = () => {
-	cards.forEach((card, index) => {
-		result += `
-				<div class="credit-card">
-					<div class="card-content">
-						<img src="./img/chip-1.svg" alt="" class="chip-image">
-						<div class="card-details">
-							<div class="credit-number">
-								<span class="number-label">Credit Number</span>
-								<span class="number">${card.number}</span>
-							</div>
-							<div class="credit-valid">
-								<div class="credit-name">
-									<span class="name-label">Credit Name</span>
-									<span class="name">${card.name}</span>
-								</div>
-								<div class="card-exp">
-									<span class="expire-label">Valid Through</span>
-									<span class="expire">${card.expire}</span>
-								</div>
-							</div>
-						</div>
-						<img src="img/visa-10.svg" alt="" class="visa-image">
-						<img src="img/mastercard-2.svg" alt="" class="master-image">
+	let cards = getUserCards();
+	let output = '';
+
+	cards.map(({ cardnumber, cardname, cardexpire }, index) => {
+		output += `
+		<div class="credit-card">
+			<div class="card-content">
+				<img src="./img/chip-1.svg" alt="" class="chip-image">
+				<div class="card-details">
+					<div class="credit-number">
+						<span class="number-label">Credit Number</span>
+						<span class="number">${cardnumber}</span>
 					</div>
-					<div class="edit-buttons">
-						<button type="button" id="edit-btn"><span class="fa fa-edit"></span></button>
-						<button type="button" class="delete-btn" id="delete-btn"><span class="fa fa-trash-can"></span></button>
+					<div class="credit-valid">
+						<div class="credit-name">
+							<span class="name-label">Credit Name</span>
+							<span class="name">${cardname}</span>
+						</div>
+						<div class="card-exp">
+							<span class="expire-label">Valid Through</span>
+							<span class="expire">${cardexpire}</span>
+						</div>
 					</div>
 				</div>
-			`;
-	})
-	cardContainer.innerHTML = result;
+				<img src="img/visa-10.svg" alt="" class="visa-image">
+				<img src="img/mastercard-2.svg" alt="" class="master-image">
+			</div>
+			<div class="edit-buttons">
+				<button type="button" id="edit-btn"><span class="fa fa-edit"></span></button>
+				<button type="button" id="delete-btn" class="delete"><span class="fa fa-trash-can"></span></button>
+			</div>
+		</div>
+		`;
+		cardContainer.innerHTML = output;
+		let creditCards = cardContainer.querySelectorAll('.credit-card');
+		console.log(creditCards)
+		creditCards.forEach((card) => {
+			let deleteBtn = card.querySelectorAll('.delete');
+			deleteBtn.forEach((btn) => {
+				btn.addEventListener('click', () => {
+					handleDelete(index);
+					appendNewCards();
+				});
+			});
+		});
+	});
 }
-appendNewCards();
+
+function handleDelete(index) {
+	let cards = getUserCards();
+	cards.splice(index, 1);
+	localStorage.setItem('user-cards', JSON.stringify(cards));
+}

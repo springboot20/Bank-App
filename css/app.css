@@ -474,17 +474,13 @@ nav.app-navigation {
 	z-index: 1;
 }
 
-
-.nav-container {
-	justify-content: space-between;
-}
-
 .nav-container {
 	height: 100%;
 	width: 100%;
 	padding: 1rem;
 	display: flex;
 	align-items: center;
+	gap: 17rem;
 }
 
 .nav-container .nav-logo {

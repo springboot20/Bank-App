@@ -24,7 +24,7 @@ body {
 	width: 33rem;
 	height: 17rem;
 	padding: 20px 15px;
-	background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../img/background.jpg);
+	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../img/background.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -183,6 +183,10 @@ button.add-card span.fa {
 }
 
 .card-form {
+	position: absolute;
+	top: 30%;
+	left: 45%;
+	transform: translate(-30%, -45%);
 	margin-top: 90px;
 	background: hsl(231, 100%, 99%);
 	border-radius: 1.4rem;
@@ -241,15 +245,6 @@ form {
 	font-weight: 600;
 }
 
-.overlay #close-icon {
-	position: absolute;
-	right: 20px;
-	top: 35px;
-	color: var(--lighter-color);
-	font-size: 1.85em;
-	font-weight: 700;
-}
-
 @media (max-width:768px) {
 	.form-container {
 		display: flex;
@@ -298,42 +293,11 @@ form {
 }
 
 @media (min-width:830px) {
-	.card-form {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) scale(0);
+	.cards {
+		grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
 	}
 
-	.overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		height: 100%;
-		width: 100%;
-		background: rgba(0, 0, 0, .5);
-		backdrop-filter: blur(2px);
-		z-index: 1;
-		transition: all 700ms ease-in-out;
-	}
-
-	.overlay.hidden {
-		display: none;
-	}
-
-	.card-form.active {
-		transition: all 700ms ease-in-out;
-		transform: translate(0%) scale(1);
-	}
-
-	.overlay.active {
-		display: block;
-	}
-
-	.card-form.active {
-		transition: all 700ms ease-in-out;
-		transform: translate(-50%, -50%) scale(1);
+	.credit-card {
+		width: 35rem;
 	}
 }
