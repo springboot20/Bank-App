@@ -17,8 +17,8 @@ form.addEventListener('submit', (event) => {
 
 	(numberInput.value === '') ? numberField.classList.add('shake', 'error') : (event) => { handleNumberValidation(event, numberField) };
 	(nameInput.value === '') ? nameField.classList.add('shake', 'error') : (event) => { handleNameValidation(event, nameField) };
-	//(expireInput.value === '') ? expireField.classList.add('shake', 'error') : handleNumberValidation(numberInput, numberField);
-	//(secureInput.value === '') ? secureField.classList.add('shake', 'error') : handleNumberValidation(numberInput, numberField);
+	(expireInput.value === '') ? expireField.classList.add('shake', 'error') : (event) => { handleNumberValidation(event, expireField) };
+	(secureInput.value === '') ? secureField.classList.add('shake', 'error') : (event) => { handleSecureValidation(event, secureField) };
 
 	CardStore(numberInput, nameInput, expireInput, secureInput);
 
@@ -30,7 +30,9 @@ form.addEventListener('submit', (event) => {
 	}, 2500);
 
 	numberInput.addEventListener('keyup', (event) => { handleNumberValidation(event, numberField) });
-	nameInput.addEventListener('keyup', (event) => { handleNameValidation(event, nameField) })
+	nameInput.addEventListener('keyup', (event) => { handleNameValidation(event, nameField) });
+	expireInput.addEventListener('keyup', (event) => { handleNumberValidation(event, expireField) });
+	secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) })
 })
 
 
@@ -89,4 +91,12 @@ const handleNameValidation = (event, nField) => {
 		nField.classList.remove('error');
 		nField.classList.add('valid');
 	}
+}
+
+const handleExpireThroughValidation = (event, eField) => {
+
+}
+
+const handleSecureValidation = (event, sField) => {
+
 }
