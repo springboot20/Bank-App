@@ -117,7 +117,7 @@
 
 				<div class="container form-container">
 					<div class="card-form">
-						<form action="#" id="form">
+						<form action="./card.html" id="form">
 							<div class="field card-number">
 								<div class="form-control">
 									<label for="card-number">Card Number</label>
@@ -137,15 +137,14 @@
 								<div class="field expire">
 									<div class="form-control">
 										<label for="expire">Expiry date</label>
-										<input type="text" name="expire" id="expire" maxlength="5" placeholder="07/31"
-											onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+										<input type="text" name="expire" id="expire" maxlength="5" placeholder="--/--">
 									</div>
 									<small class="error error-txt">Expire Through cannot be blanked</small>
 								</div>
 								<div class="field security-code">
 									<div class="form-control">
 										<label for="security-code">Security code</label>
-										<input type="password" name="security-code" id="security" placeholder="****"
+										<input type="password" name="security-code" id="security" placeholder="----------"
 											onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 									</div>
 									<small class="error error-txt">Secure code cannot be blanked</small>

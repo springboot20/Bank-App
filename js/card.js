@@ -33,7 +33,7 @@ const appendNewCards = () => {
 	let cards = getUserCards();
 	let output = '';
 
-	cards.map(({ cardnumber, cardname, cardexpire }, index) => {
+	cards.map(({ cardnumber, cardname, cardexpire }) => {
 		output += `
 		<div class="credit-card">
 			<div class="card-content">
@@ -70,7 +70,7 @@ const appendNewCards = () => {
 			let deleteBtn = card.querySelectorAll('.delete');
 			deleteBtn.forEach((btn) => {
 				btn.addEventListener('click', () => {
-					handleDelete(index);
+					handleDelete();
 					appendNewCards();
 				});
 			});
@@ -78,8 +78,8 @@ const appendNewCards = () => {
 	});
 }
 
-function handleDelete(index) {
+function handleDelete() {
 	let cards = getUserCards();
-	cards.splice(index, 1);
+	cards.pop();
 	localStorage.setItem('user-cards', JSON.stringify(cards));
 }

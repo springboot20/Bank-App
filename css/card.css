@@ -220,6 +220,8 @@ form {
 	height: 40px;
 	border: 2px solid #bfbfbf;
 	width: 100%;
+	font-size: 1.4em;
+	font-weight: 700;
 	box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
 	color: var(--marine-blue);
 }
