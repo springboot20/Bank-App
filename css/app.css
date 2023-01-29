@@ -296,6 +296,7 @@ li.nav-item ul.dropdown-menu {
 
 li.nav-item ul.dropdown-menu li.drop-item {
 	height: auto;
+	visibility: hidden;
 	opacity: 0;
 	margin-left: 300px;
 	transition: all 500ms ease;
@@ -333,6 +334,7 @@ li.nav-item .sub-div span.drop-icon {
 li.nav-item ul.dropdown-menu.show li.drop-item {
 	height: auto;
 	opacity: 1;
+	visibility: visible;
 	margin-left: 5px;
 }
 

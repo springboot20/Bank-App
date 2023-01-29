@@ -121,34 +121,37 @@
 							<div class="field card-number">
 								<div class="form-control">
 									<label for="card-number">Card Number</label>
-									<input type="text" name="card-number" id="number" placeholder="1234 5678 7890 4288">
+									<input type="text" name="card-number" id="number" maxlength="19" placeholder="1234 5678 7890 4288"
+										onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 								</div>
-								<small class="error error-txt">password cannot be blanked</small>
+								<small class="error error-txt">Card number cannot be blanked</small>
 							</div>
 							<div class="field card-name">
 								<div class="form-control">
 									<label for="card-name">Name on Card</label>
 									<input type="text" name="card-name" id="name" placeholder="yunus abbas opeyemi">
 								</div>
-								<small class="error error-txt">password cannot be blanked</small>
+								<small class="error error-txt">Card name cannot be blanked</small>
 							</div>
 							<div class="flex-field">
 								<div class="field expire">
 									<div class="form-control">
 										<label for="expire">Expiry date</label>
-										<input type="text" name="expire" id="expire" placeholder="07/31">
+										<input type="text" name="expire" id="expire" maxlength="5" placeholder="07/31"
+											onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 									</div>
-									<small class="error error-txt">password cannot be blanked</small>
+									<small class="error error-txt">Expire Through cannot be blanked</small>
 								</div>
 								<div class="field security-code">
 									<div class="form-control">
 										<label for="security-code">Security code</label>
-										<input type="text" name="security-code" id="security" placeholder="****">
+										<input type="password" name="security-code" id="security" placeholder="****"
+											onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 									</div>
-									<small class="error error-txt">password cannot be blanked</small>
+									<small class="error error-txt">Secure code cannot be blanked</small>
 								</div>
 							</div>
-							<button type="submit" class="btn" id="add-card-btn">Save Card</button>
+							<button type="submit" class="btn" id="add-card-btn">Add Card</button>
 						</form>
 					</div>
 				</div>

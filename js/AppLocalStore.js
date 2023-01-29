@@ -44,7 +44,7 @@ let CardStore = (number, name, expire, secure) => {
 
     let cardsDetail = {
         cardnumber: number.value,
-        cardname: name.value.toLowerCase(),
+        cardname: name.value.toUpperCase(),
         cardexpire: expire.value,
         cardSecure: secure.value
     }

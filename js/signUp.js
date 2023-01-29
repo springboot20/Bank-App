@@ -38,10 +38,10 @@ form.addEventListener('submit', (event) => {
         signButton.append(span);
     }
 
-    username.addEventListener('keyup', () => { checkUsernameHandler(username, uField) })
-    email.addEventListener('keyup', () => { checkEmailHandler(email, eField) })
-    passWord.addEventListener('keyup', () => { checkPasswordHandler(passWord, pField) })
-    confirmPassword.addEventListener('keyup', () => { confirmHandler(confirmPassword, passWord, cField) })
+    username.addEventListener('keyup', () => { checkUsernameHandler(username, uField) });
+    email.addEventListener('keyup', () => { checkEmailHandler(email, eField) });
+    passWord.addEventListener('keyup', () => { checkPasswordHandler(passWord, pField) });
+    confirmPassword.addEventListener('keyup', () => { confirmHandler(confirmPassword, passWord, cField) });
 })
 
 /**

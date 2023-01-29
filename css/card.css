@@ -186,7 +186,7 @@ button.add-card span.fa {
 	position: absolute;
 	top: 30%;
 	left: 45%;
-	transform: translate(-30%, -45%);
+	transform: translate(-45%, -30%);
 	margin-top: 90px;
 	background: hsl(231, 100%, 99%);
 	border-radius: 1.4rem;
@@ -239,11 +239,62 @@ form {
 }
 
 .field .error-txt {
-	display: inline-flex;
+	display: inline;
 	color: #dc3545;
 	margin-top: 0.95em;
 	font-weight: 600;
+	font-size: 10px !important;
 }
+
+.field.shake {
+	animation: shake 0.2s ease-in-out;
+}
+
+form .field.shake input,
+form .field.error input {
+	border-color: #f75842;
+}
+
+form .field input:focus,
+form .field.valid input {
+	border-color: #167ece;
+}
+
+form .field .error {
+	display: none;
+}
+
+form .field.shake .error,
+form .field.error .error {
+	display: block;
+}
+
+@keyframes shake {
+
+	0%,
+	100% {
+		margin-left: 0px;
+	}
+
+	20%,
+	80% {
+		margin-left: -12px;
+	}
+
+
+	40%,
+	60% {
+		margin-left: 12px;
+	}
+}
+
+@media screen and (min-width:769px) {
+	.main-container {
+		width: 420px;
+		max-width: 100%;
+	}
+}
+
 
 @media (max-width:768px) {
 	.form-container {
@@ -277,7 +328,7 @@ form {
 	}
 
 	.card-form {
-		width: 460px;
+		width: 470px;
 		max-width: 100%;
 		background: hsl(231, 100%, 99%);
 		border-radius: 1.4rem;
