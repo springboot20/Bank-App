@@ -33,7 +33,7 @@ const appendNewCards = () => {
 	let cards = getUserCards();
 	let output = '';
 
-	cards.map(({ cardnumber, cardname, cardexpire }) => {
+	cards.map(({ cardnumber, cardname, cardexpire }, index) => {
 		output += `
 		<div class="credit-card">
 			<div class="card-content">
@@ -58,27 +58,34 @@ const appendNewCards = () => {
 				<img src="img/mastercard-2.svg" alt="" class="master-image">
 			</div>
 			<div class="edit-buttons">
-				<button type="button" id="edit-btn"><span class="fa fa-edit"></span></button>
-				<button type="button" id="delete-btn" class="delete"><span class="fa fa-trash-can"></span></button>
+				<button type="button" id="edit-btn" class="edit-btn"><span class="fa fa-edit"></span></button>
+				<button type="button" id="delete-btn" class="delete-btn"><span class="fa fa-trash-can"></span></button>
 			</div>
 		</div>
 		`;
 		cardContainer.innerHTML = output;
 		let creditCards = cardContainer.querySelectorAll('.credit-card');
-		console.log(creditCards)
 		creditCards.forEach((card) => {
-			let deleteBtn = card.querySelectorAll('.delete');
+			let deleteBtn = card.querySelectorAll('.delete-btn');
+			let editBtn = card.querySelectorAll('.edit-btn')
+
 			deleteBtn.forEach((btn) => {
 				btn.addEventListener('click', () => {
 					handleDelete();
 					appendNewCards();
 				});
 			});
+
+			editBtn.forEach(btn => {
+				btn.addEventListener('click', () => {
+					window.location.href = './edit.html'
+				})
+			});
 		});
 	});
 }
 
-function handleDelete() {
+const handleDelete = () => {
 	let cards = getUserCards();
 	cards.pop();
 	localStorage.setItem('user-cards', JSON.stringify(cards));

@@ -1,7 +1,7 @@
-import showMenu, { ShowDropDown } from "./helper.js";
+import showMenu, { ShowDropDown, handleEdit } from "./helper.js";
 import { CardStore } from "./AppLocalStore.js";
 
-const form = document.querySelector(' form');
+const form = document.querySelector('#form');
 const numberInput = document.querySelector('#number');
 const nameInput = document.querySelector('#name');
 const expireInput = document.querySelector('#expire');
@@ -33,14 +33,14 @@ form.addEventListener('submit', (event) => {
 		CardStore(numberInput, nameInput, expireInput, secureInput);
 	}
 
-})
+});
 
 numberInput.addEventListener('keyup', (event) => { handleNumberValidation(event, numberField) });
 nameInput.addEventListener('keyup', (event) => { handleNameValidation(event, nameField) });
 expireInput.addEventListener('keyup', (event) => { handleExpireThroughValidation(event, expireField) });
 secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) })
 
-
+handleEdit([numberInput, nameInput])
 addEventListener('load', () => {
 	document.body.classList.add('loaded');
 });
