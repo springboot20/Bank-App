@@ -1,16 +1,13 @@
-import showMenu, { ShowCardForm } from "./helper.js";
 import { getUserCards } from "./AppLocalStore.js";
-import { ShowDropDown } from "./helper.js";
-
-/**
- * Function Calls import from Helper js
- */
+import showMenu, { ShowDropDown, ShowCardForm, handleDelete } from "./helper.js";
 
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
 	ShowDropDown('dropMenu', 'drop-icon');
-	ShowCardForm('add-card')
+	ShowCardForm('add-card');
+	setTimeout(() => appendNewCards(), 4000);
 })();
+
 
 const navLinks = document.querySelectorAll(".nav-item a.nav-link");
 function linkAction() {
@@ -24,16 +21,14 @@ navLinks.forEach((m) => m.addEventListener("click", linkAction));
 
 addEventListener('load', () => {
 	document.body.classList.add('loaded');
-	setTimeout(() => appendNewCards(), 7000)
 });
-
 
 const cardContainer = document.querySelector('.cards');
 const appendNewCards = () => {
 	let cards = getUserCards();
 	let output = '';
 
-	cards.map(({ cardnumber, cardname, cardexpire }, index) => {
+	cards.forEach(({ cardnumber, cardname, cardexpire }, index) => {
 		output += `
 		<div class="credit-card">
 			<div class="card-content">
@@ -63,7 +58,9 @@ const appendNewCards = () => {
 			</div>
 		</div>
 		`;
+
 		cardContainer.innerHTML = output;
+
 		let creditCards = cardContainer.querySelectorAll('.credit-card');
 		creditCards.forEach((card) => {
 			let deleteBtn = card.querySelectorAll('.delete-btn');
@@ -71,22 +68,19 @@ const appendNewCards = () => {
 
 			deleteBtn.forEach((btn) => {
 				btn.addEventListener('click', () => {
-					handleDelete();
+					handleDelete(index, cards);
 					appendNewCards();
 				});
 			});
 
 			editBtn.forEach(btn => {
 				btn.addEventListener('click', () => {
-					window.location.href = './edit.html'
+					console.log(index)
+					setTimeout(() => {
+						window.location.href = './edit.html'
+					}, 2000)
 				})
 			});
 		});
 	});
-}
-
-const handleDelete = () => {
-	let cards = getUserCards();
-	cards.pop();
-	localStorage.setItem('user-cards', JSON.stringify(cards));
 }

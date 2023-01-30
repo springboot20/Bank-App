@@ -1,7 +1,16 @@
-import showMenu, { ShowDropDown, handleEdit } from "./helper.js";
+/**
+ * FORM SCRIPT SCOPE
+*/
 import { CardStore } from "./AppLocalStore.js";
+import showMenu, { ShowDropDown } from "./helper.js"
 
-const form = document.querySelector('#form');
+
+(() => {
+	showMenu('open-btn', 'nav-menu-container')('close-icon');
+	ShowDropDown('dropMenu', 'drop-icon');
+})();
+
+const form = document.querySelector('form');
 const numberInput = document.querySelector('#number');
 const nameInput = document.querySelector('#name');
 const expireInput = document.querySelector('#expire');
@@ -40,29 +49,6 @@ nameInput.addEventListener('keyup', (event) => { handleNameValidation(event, nam
 expireInput.addEventListener('keyup', (event) => { handleExpireThroughValidation(event, expireField) });
 secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) })
 
-handleEdit([numberInput, nameInput])
-addEventListener('load', () => {
-	document.body.classList.add('loaded');
-});
-
-(() => {
-	showMenu('open-btn', 'nav-menu-container')('close-icon');
-	ShowDropDown('dropMenu', 'drop-icon');
-})();
-
-const navLinks = document.querySelectorAll(".nav-item a.nav-link");
-function linkAction() {
-	navLinks.forEach((n) => n.classList.remove("active-link"));
-	this.classList.add("active-link");
-
-	const navMenu = document.querySelector(`.nav-menu-container`);
-	navMenu.classList.remove("show");
-}
-navLinks.forEach((m) => m.addEventListener("click", linkAction));
-
-addEventListener('load', () => {
-	document.body.classList.add('loaded');
-});
 
 const handleNumberValidation = (event, nField) => {
 	let outputValue = event.target.value.replaceAll(' ', '');
@@ -128,3 +114,9 @@ const handleSecureValidation = (event, sField) => {
 		sField.classList.add('valid')
 	}
 }
+
+addEventListener('load', () => {
+	document.body.classList.add('loaded');
+});
+
+export { handleNumberValidation, handleNameValidation, handleExpireThroughValidation, handleSecureValidation }

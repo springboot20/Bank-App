@@ -240,6 +240,12 @@ form {
 	transition: all 0.2s ease;
 }
 
+.card-form .edit-btns {
+	display: flex;
+	gap: 1rem;
+	flex-shrink: 0;
+}
+
 .field .error-txt {
 	display: inline;
 	color: #dc3545;

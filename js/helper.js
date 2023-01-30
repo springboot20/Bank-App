@@ -40,19 +40,19 @@ const ShowDropDown = (dropId, dropBtn) => {
     });
 }
 
-
 const ShowCardForm = (btnId) => {
     const cardBtn = document.querySelector(`.${btnId}`);
     cardBtn.addEventListener('click', () => {
         window.location.href = './cardForm.html'
-    })
+    });
 }
 
-/**
- * DOM MANIPULATION SCOPES
- */
-const creditCard = document.createElement('div');
-creditCard.classList.add('credit-card');
+
+const handleDelete = (index, cards) => {
+    cards = getUserCards();
+    cards.splice(index, 1);
+    localStorage.setItem('user-cards', JSON.stringify(cards));
+}
 
 export default showMenu
-export { ShowDropDown, ShowCardForm, creditCard }
+export { ShowDropDown, ShowCardForm, handleDelete }
