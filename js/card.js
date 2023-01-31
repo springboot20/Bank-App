@@ -1,5 +1,5 @@
 import showMenu, { ShowDropDown, ShowCardForm } from "./helper.js";
-import { getUserCards } from './AppLocalStore.js'
+
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
 	ShowDropDown('dropMenu', 'drop-icon');
@@ -24,13 +24,20 @@ addEventListener('load', () => {
 addEventListener('DOMContentLoaded', () => {
 	appendNewCards()
 })
+
 const cardContainer = document.querySelector('.cards');
 
 const appendNewCards = () => {
-	let cards = getUserCards();
+	let cardsArray;
+	let card = localStorage.getItem('user-cards');
+	if (card === null) {
+		cardsArray = []
+	} else {
+		cardsArray = JSON.parse(card)
+	}
 	let output = '';
-	console.log(cards)
-	cards.forEach(({ cardnumber, cardname, cardexpire }, index) => {
+	for (const card in Object.entries(cardsArray)) {
+		let { cardnumber, cardname, cardexpire } = cardsArray[card];
 		output += `
 		<div class="credit-card">
 			<div class="card-content">
@@ -62,29 +69,29 @@ const appendNewCards = () => {
 		`;
 
 		cardContainer.innerHTML = output;
-
 		let creditCards = cardContainer.querySelectorAll('.credit-card');
-		creditCards.forEach((card) => {
-			let deleteBtn = card.querySelector('.delete-btn');
-			let editBtn = card.querySelector('.edit-btn')
-
+		creditCards.forEach((c) => {
+			let deleteBtn = c.querySelector('.delete-btn');
+			let editBtn = c.querySelector('.edit-btn')
 			deleteBtn.addEventListener('click', () => {
-				handleDelete(index)
+				handleDelete(card)
 			});
 
 			editBtn.addEventListener('click', () => {
-				console.log(cards)
+				console.log(cardsArray)
 				setTimeout(() => {
 					window.location.href = './edit.html'
 				}, 2000)
 			});
-		});
-	});
+		})
+	}
+
+	return cardsArray;
 }
 
 function handleDelete(ind) {
-	let cards = getUserCards();
-	cards.splice(ind);
+	let cards = JSON.parse(localStorage.getItem('user-cards'));
+	cards.splice(ind, 1);
 	localStorage.setItem('user-cards', JSON.stringify(cards));
 	appendNewCards();
 }

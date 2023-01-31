@@ -26,7 +26,6 @@ let LocalStore = (user, email, passWord, confirmPassword) => {
 }
 
 
-
 let getUserCards = () => {
     let cardsArray;
     (localStorage.getItem('user-cards') === null) ? cardsArray = [] : cardsArray = JSON.parse(localStorage.getItem('user-cards'));
@@ -51,5 +50,5 @@ let CardStore = (number, name, expire, secure) => {
 
 
 export default LocalStore;
-export { getUsers}
+export { getUsers }
 export { getUserCards, CardStore }

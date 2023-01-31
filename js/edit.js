@@ -1,5 +1,6 @@
-import { handleNumberValidation, handleNameValidation, handleExpireThroughValidation, handleSecureValidation } from './form.js'
 import { CardStore } from './AppLocalStore.js';
+import { handleNumberValidation, handleNameValidation, handleExpireThroughValidation, handleSecureValidation } from './form.js'
+
 const form = document.querySelector('form');
 const numberInput = document.querySelector('#number');
 const nameInput = document.querySelector('#name');
@@ -41,10 +42,7 @@ saveBtn.addEventListener('click', () => {
 		setTimeout(() => {
 			window.location.href = form.getAttribute('action')
 		}, 4500);
-		CardStore(numberInput, nameInput, expireInput, secureInput);
-		setTimeout(() => {
-			window.location.href = form.getAttribute('action')
-		}, 1000)
+		CardStore(numberInput, nameInput, expireInput, secureInput)
 	}
 
 });
@@ -55,14 +53,18 @@ expireInput.addEventListener('keyup', (event) => { handleExpireThroughValidation
 secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) })
 
 editBtn.addEventListener('click', () => {
-	let cards = JSON.parse(localStorage.getItem('user-cards'));
-	console.log(cards)
-	cards.map(({ cardnumber, cardname, cardexpire, cardSecure }, index) => {
+	let cardsArray;
+	let cards = localStorage.getItem('user-cards');
+
+	cardsArray = JSON.parse(cards);
+
+	cardsArray.map(({ cardnumber, cardname, cardexpire, cardSecure }, index) => {
 		editCards(cardnumber, cardname, cardexpire, cardSecure);
-		cards.splice(index, 1);
-		console.log(cards.splice(index, 1));
+		cardsArray.splice(index, 1);
 	});
-	localStorage.setItem('user-cards', JSON.stringify(cards));
+	localStorage.setItem('user-cards', JSON.stringify(cardsArray));
+
+	return cardsArray;
 })
 
 addEventListener('load', () => {

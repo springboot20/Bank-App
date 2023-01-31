@@ -40,7 +40,6 @@ form.addEventListener('submit', (event) => {
 		setTimeout(() => window.location.href = form.getAttribute('action'), 4500);
 		CardStore(numberInput, nameInput, expireInput, secureInput);
 	}
-
 });
 
 numberInput.addEventListener('keyup', (event) => { handleNumberValidation(event, numberField) });
