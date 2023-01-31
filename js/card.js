@@ -1,11 +1,9 @@
-import { getUserCards } from "./AppLocalStore.js";
-import showMenu, { ShowDropDown, ShowCardForm, handleDelete } from "./helper.js";
-
+import showMenu, { ShowDropDown, ShowCardForm } from "./helper.js";
+import { getUserCards } from './AppLocalStore.js'
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
 	ShowDropDown('dropMenu', 'drop-icon');
 	ShowCardForm('add-card');
-	setTimeout(() => appendNewCards(), 4000);
 })();
 
 
@@ -23,11 +21,15 @@ addEventListener('load', () => {
 	document.body.classList.add('loaded');
 });
 
+addEventListener('DOMContentLoaded', () => {
+	appendNewCards()
+})
 const cardContainer = document.querySelector('.cards');
+
 const appendNewCards = () => {
 	let cards = getUserCards();
 	let output = '';
-
+	console.log(cards)
 	cards.forEach(({ cardnumber, cardname, cardexpire }, index) => {
 		output += `
 		<div class="credit-card">
@@ -63,24 +65,28 @@ const appendNewCards = () => {
 
 		let creditCards = cardContainer.querySelectorAll('.credit-card');
 		creditCards.forEach((card) => {
-			let deleteBtn = card.querySelectorAll('.delete-btn');
-			let editBtn = card.querySelectorAll('.edit-btn')
+			let deleteBtn = card.querySelector('.delete-btn');
+			let editBtn = card.querySelector('.edit-btn')
 
-			deleteBtn.forEach((btn) => {
-				btn.addEventListener('click', () => {
-					handleDelete(index, cards);
-					appendNewCards();
-				});
+			deleteBtn.addEventListener('click', () => {
+				handleDelete(index)
 			});
 
-			editBtn.forEach(btn => {
-				btn.addEventListener('click', () => {
-					console.log(index)
-					setTimeout(() => {
-						window.location.href = './edit.html'
-					}, 2000)
-				})
+			editBtn.addEventListener('click', () => {
+				console.log(cards)
+				setTimeout(() => {
+					window.location.href = './edit.html'
+				}, 2000)
 			});
 		});
 	});
 }
+
+function handleDelete(ind) {
+	let cards = getUserCards();
+	cards.splice(ind);
+	localStorage.setItem('user-cards', JSON.stringify(cards));
+	appendNewCards();
+}
+
+export default appendNewCards

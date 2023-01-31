@@ -25,26 +25,21 @@ let LocalStore = (user, email, passWord, confirmPassword) => {
     localStorage.setItem('user-login', JSON.stringify(users));
 }
 
+
+
 let getUserCards = () => {
     let cardsArray;
     (localStorage.getItem('user-cards') === null) ? cardsArray = [] : cardsArray = JSON.parse(localStorage.getItem('user-cards'));
-    return cardsArray;
+    return cardsArray
 }
 
-/**
- *
- * @param {*} number
- * @param {*} name
- * @param {*} expire
- * @param {*} secure
- */
 
 let CardStore = (number, name, expire, secure) => {
     const cards = getUserCards();
 
     let cardsDetail = {
         cardnumber: number.value,
-        cardname: name.value.toUpperCase(),
+        cardname: name.value,
         cardexpire: expire.value,
         cardSecure: secure.value
     }
@@ -52,5 +47,9 @@ let CardStore = (number, name, expire, secure) => {
     cards.push(cardsDetail);
     localStorage.setItem('user-cards', JSON.stringify(cards));
 }
-export default LocalStore
-export { getUsers, getUserCards, CardStore }
+
+
+
+export default LocalStore;
+export { getUsers}
+export { getUserCards, CardStore }

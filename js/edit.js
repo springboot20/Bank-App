@@ -1,7 +1,6 @@
-import { CardStore, getUserCards } from "./AppLocalStore.js";
 import { handleNumberValidation, handleNameValidation, handleExpireThroughValidation, handleSecureValidation } from './form.js'
-
-const form = document.querySelector('form')
+import { CardStore } from './AppLocalStore.js';
+const form = document.querySelector('form');
 const numberInput = document.querySelector('#number');
 const nameInput = document.querySelector('#name');
 const expireInput = document.querySelector('#expire');
@@ -56,14 +55,13 @@ expireInput.addEventListener('keyup', (event) => { handleExpireThroughValidation
 secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) })
 
 editBtn.addEventListener('click', () => {
-	let cards = getUserCards();
-	cards.some(({ cardnumber, cardname, cardexpire, cardSecure }, index) => {
-		editCards(cardnumber, cardname, cardexpire, cardSecure)
-
-		cards.splice(index, index)
-		console.log(index)
+	let cards = JSON.parse(localStorage.getItem('user-cards'));
+	console.log(cards)
+	cards.map(({ cardnumber, cardname, cardexpire, cardSecure }, index) => {
+		editCards(cardnumber, cardname, cardexpire, cardSecure);
+		cards.splice(index, 1);
+		console.log(cards.splice(index, 1));
 	});
-
 	localStorage.setItem('user-cards', JSON.stringify(cards));
 })
 

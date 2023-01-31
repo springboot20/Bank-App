@@ -1,4 +1,3 @@
-
 /**
  *
  * @param {*} openId
@@ -47,12 +46,5 @@ const ShowCardForm = (btnId) => {
     });
 }
 
-
-const handleDelete = (index, cards) => {
-    cards = getUserCards();
-    cards.splice(index, 1);
-    localStorage.setItem('user-cards', JSON.stringify(cards));
-}
-
 export default showMenu
-export { ShowDropDown, ShowCardForm, handleDelete }
+export { ShowDropDown, ShowCardForm}
