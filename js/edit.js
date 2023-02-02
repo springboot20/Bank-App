@@ -1,6 +1,3 @@
-import { CardStore } from './AppLocalStore.js';
-import { handleNumberValidation, handleNameValidation, handleExpireThroughValidation, handleSecureValidation } from './form.js'
-
 const form = document.querySelector('form');
 const numberInput = document.querySelector('#number');
 const nameInput = document.querySelector('#name');
@@ -38,11 +35,24 @@ saveBtn.addEventListener('click', () => {
 		secureField.classList.remove('shake');
 	}, 2500);
 
+
+	let cardsObj;
+	(localStorage.getItem('user-cards') === null) ? cardsObj = [] : cardsObj = JSON.parse(localStorage.getItem('user-cards'));
+
+	let cardsDetail = {
+		cardnumber: numberInput.value,
+		cardname: nameInput.value,
+		cardexpire: expireInput.value,
+		cardSecure: secureInput.value
+	}
+
 	if (!numberField.classList.contains('error') && !nameField.classList.contains('error') && !expireField.classList.contains('error') && !secureField.classList.contains('error')) {
+		cardsObj.push(cardsDetail);
+		localStorage.setItem('user-cards', JSON.stringify(cardsObj));
+
 		setTimeout(() => {
 			window.location.href = form.getAttribute('action')
 		}, 4500);
-		CardStore(numberInput, nameInput, expireInput, secureInput)
 	}
 
 });
@@ -52,19 +62,86 @@ nameInput.addEventListener('keyup', (event) => { handleNameValidation(event, nam
 expireInput.addEventListener('keyup', (event) => { handleExpireThroughValidation(event, expireField) });
 secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) })
 
+
+const handleNumberValidation = (event, nField) => {
+	let outputValue = event.target.value.replaceAll(' ', '');
+	if (event.target.value.value === '') {
+		nField.classList.add('error');
+		nField.classList.remove('valid');
+	} else {
+		nField.classList.add('valid');
+		nField.classList.remove('error');
+
+		if (event.target.value.length > 14) {
+			event.target.value = outputValue.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3 $4")
+		} else if (event.target.value.length > 9) {
+			event.target.value = outputValue.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3")
+		} else if (event.target.value.length > 4) {
+			event.target.value = outputValue.replace(/(\d{4})(\d{0,4})/, "$1 $2")
+		}
+	}
+}
+
+const handleNameValidation = (event, nField) => {
+	let pattern = /^[A-Za-z][A-Za-z0-9 ]{7,29}$/
+	if (!event.target.value.match(pattern)) {
+		nField.classList.add('error');
+		nField.classList.remove('valid');
+
+		let errorTxt = nField.querySelector('.error-txt');
+		(event.target.value != "") ? errorTxt.textContent = "Card name can only start with an uppercase followed by a lowercase, a digit and a space between" : errorTxt.textContent = "Card name cannot be blanked"
+
+	} else {
+		nField.classList.remove('error');
+		nField.classList.add('valid');
+	}
+}
+
+const handleExpireThroughValidation = (event, eField) => {
+	let patternInput = event.target.value.replaceAll('/', '');
+	if (event.target.value === '') {
+		eField.classList.add('error');
+		eField.classList.remove('valid');
+
+	} else {
+		eField.classList.remove('error');
+		eField.classList.add('valid');
+
+		if (event.target.value.length > 2) {
+			event.target.value = patternInput.replace(/(\d{2})(\d{0,2})/, "$1/$2")
+		}
+	}
+}
+
+const handleSecureValidation = (event, sField) => {
+	let pattern = /^[0-9]{1,10}$/;
+	if (!pattern.test(event.target.value)) {
+		sField.classList.add('error');
+		sField.classList.remove('valid');
+
+		let errorTxt = sField.querySelector('.error-txt');
+		(event.target.value != "") ? errorTxt.textContent = "Secure should only contain a maxlength of 10" : errorTxt.textContent = "Secure code cannot be blanked"
+
+	} else {
+		sField.classList.remove('error');
+		sField.classList.add('valid')
+	}
+}
+
 editBtn.addEventListener('click', () => {
-	let cardsArray;
-	let cards = localStorage.getItem('user-cards');
+	let cardsObj;
+	if (localStorage.getItem("user-cards") === null) {
+		cardsObj = [];
+	} else {
+		cardsObj = JSON.parse(localStorage.getItem('user-cards'));;
+	}
 
-	cardsArray = JSON.parse(cards);
-
-	cardsArray.map(({ cardnumber, cardname, cardexpire, cardSecure }, index) => {
+	cardsObj.forEach(({ cardnumber, cardname, cardexpire, cardSecure }, index) => {
 		editCards(cardnumber, cardname, cardexpire, cardSecure);
-		cardsArray.splice(index, 1);
+		cardsObj.splice(index, 1);
+		localStorage.setItem('user-cards', JSON.stringify(cardsObj));
 	});
-	localStorage.setItem('user-cards', JSON.stringify(cardsArray));
-
-	return cardsArray;
+	return cardsObj;
 })
 
 addEventListener('load', () => {

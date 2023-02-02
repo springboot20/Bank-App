@@ -118,4 +118,3 @@ addEventListener('load', () => {
 });
 
 export { handleNumberValidation, handleNameValidation, handleExpireThroughValidation, handleSecureValidation }
-

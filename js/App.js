@@ -67,3 +67,4 @@ function formatNumber(amountInN, amountInD) {
 }
 
 formatNumber(amountInNaira, amountInDollar)
+

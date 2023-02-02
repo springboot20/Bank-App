@@ -27,9 +27,9 @@ let LocalStore = (user, email, passWord, confirmPassword) => {
 
 
 let getUserCards = () => {
-    let cardsArray;
-    (localStorage.getItem('user-cards') === null) ? cardsArray = [] : cardsArray = JSON.parse(localStorage.getItem('user-cards'));
-    return cardsArray
+    let cardsObj;
+    (localStorage.getItem('user-cards') === null) ? cardsObj = [] : cardsObj = JSON.parse(localStorage.getItem('user-cards'));
+    return cardsObj
 }
 
 

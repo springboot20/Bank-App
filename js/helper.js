@@ -39,12 +39,29 @@ const ShowDropDown = (dropId, dropBtn) => {
     });
 }
 
-const ShowCardForm = (btnId) => {
-    const cardBtn = document.querySelector(`.${btnId}`);
-    cardBtn.addEventListener('click', () => {
-        window.location.href = './cardForm.html'
+
+
+function openCardForm(form, overflow) {
+    form.classList.remove("hidden");
+    overflow.classList.remove("hidden");
+}
+
+
+const ShowCardForm = (btnId, formId, overFlowId, closeId) => {
+    const openBtn = document.querySelector(`.${btnId}`);
+    const closeBtn = document.querySelector(`.${overFlowId} .${closeId}`);
+    const cardForm = document.querySelector(`.${formId}`);
+    const overflow = document.querySelector(`.${overFlowId}`);
+
+    openBtn.addEventListener("click", () => {
+        openCardForm(cardForm, overflow);
+    });
+
+    closeBtn.addEventListener("click", (event) => {
+        event.target.parentElement.classList.add('hidden')
+        cardForm.classList.add('hidden');
     });
 }
 
 export default showMenu
-export { ShowDropDown, ShowCardForm}
+export { ShowDropDown, ShowCardForm }

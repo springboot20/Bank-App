@@ -40,3 +40,34 @@ navLinks.forEach((m) => m.addEventListener("click", linkAction));
 addEventListener('load', () => {
 	document.body.classList.add('loaded');
 });
+
+
+
+class WalletBalance {
+
+	_transactions = []
+
+	showAccountBalance = () => {
+		this._transactions.reduce((acc, item) => {
+			if (item.type === 'in') {
+				return acc + item.amount
+			}
+			return acc - item.amount
+
+		}, 0)
+	}
+}
+class Account extends WalletBalance {
+	static getAccount() {
+		let account;
+		localStorage.getItem('account') === null ? account = [] : account = JSON.parse(localStorage.getIte('account'));
+		return account;
+	}
+
+	static addToAccount(amount) {
+		const transaction = { amount, date: new Date(), type: 'out' };
+
+		this._transactions.push(transaction);
+		//localStorage.setItem('account', JSON.stringify(account));
+	}
+}

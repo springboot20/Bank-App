@@ -6,7 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="./img/piggy-bank.svg" type="image/x-icon" />
-	<script src="https://kit.fontawesome.com/643f8e5097.js" crossorigin="anonymous"></script>
+	<!--<script src="https://kit.fontawesome.com/643f8e5097.js" crossorigin="anonymous"></script>-->
+	<link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.min.css">
 	<link rel="stylesheet" href="./css/app.css" />
 	<link rel="stylesheet" href="./css/card.css">
 	<title>Piggy Bank | Card Page</title>
@@ -124,38 +125,53 @@
 									<span class="btn-label"> Add new card</span>
 								</button>
 							</div>
-							<div class="cards">
-								<div class="credit-card">
-									<div class="card-content">
-										<img src="./img/chip-1.svg" alt="" class="chip-image">
-										<div class="card-details">
-											<div class="credit-number">
-												<span class="number-label">Credit Number</span>
-												<span class="number">**** **** **** 5025</span>
-											</div>
-											<div class="credit-valid">
-												<div class="credit-name">
-													<span class="name-label">Credit Name</span>
-													<span class="name">Yunus Abbas Opeyemi</span>
-												</div>
-												<div class="card-exp">
-													<span class="expire-label">Valid Through</span>
-													<span class="expire">07 / 27</span>
-												</div>
-											</div>
-										</div>
-										<img src="img/visa-10.svg" alt="" class="visa-image">
-										<img src="img/mastercard-2.svg" alt="" class="master-image">
-									</div>
-									<div class="edit-buttons">
-										<button type="button" id="edit-btn"><span class="fa fa-edit"></span></button>
-										<button type="button" id="delete-btn"><span class="fa fa-trash-can"></span></button>
-									</div>
-								</div>
-							</div>
+							<div class="cards" id="cards-container"></div>
 						</div>
 					</div>
 				</div>
+
+				<div class="card-form hidden">
+					<form action="./card.html" id="form">
+						<div class="field card-number">
+							<div class="form-control">
+								<label for="card-number">Card Number</label>
+								<input type="text" name="card-number" id="number" maxlength="19" placeholder="1234 5678 7890 4288"
+									onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+							</div>
+							<small class="error error-txt">Card number cannot be blanked</small>
+						</div>
+						<div class="field card-name">
+							<div class="form-control">
+								<label for="card-name">Name on Card</label>
+								<input type="text" name="card-name" id="name" placeholder="yunus abbas opeyemi">
+							</div>
+							<small class="error error-txt">Card name cannot be blanked</small>
+						</div>
+						<div class="flex-field">
+							<div class="field expire-thru">
+								<div class="form-control">
+									<label for="expire">Expire Thru</label>
+									<input type="text" id="expire-thru" maxlength="5" placeholder="--/--"
+										onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+								</div>
+								<small class="error error-txt">Expire Through cannot be blanked</small>
+							</div>
+							<div class="field security-code">
+								<div class="form-control">
+									<label for="security-code">Security code</label>
+									<input type="password" name="security-code" id="security" placeholder="----------"
+										onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+								</div>
+								<small class="error error-txt">Secure code cannot be blanked</small>
+							</div>
+						</div>
+						<button type="submit" class="btn add-btn" id="add-card-btn">Add card</button>
+					</form>
+				</div>
+
+			</div>
+			<div class="over-flow hidden">
+				<span class="fa fa-close close-icon"></span>
 			</div>
 		</main>
 	</div>
