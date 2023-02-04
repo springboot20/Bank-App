@@ -9,7 +9,9 @@ const secureInput = document.querySelector('#security');
 const display = document.querySelector('#display-list');
 
 const saveInd = document.getElementById('save-index');
+
 const saveBtn = document.getElementById('save-card-btn');
+const addBtn = document.getElementById('add-card-btn');
 
 const numberField = document.querySelector('.card-number');
 const nameField = document.querySelector('.card-name');
@@ -30,31 +32,33 @@ const handleOperation = () => {
 	}, 2500);
 
 	if (!numberField.classList.contains('error') && !nameField.classList.contains('error') && !expireField.classList.contains('error') && !secureField.classList.contains('error')) {
-		CardStore(numberInput, nameInput, expireInput, secureInput);
 		setTimeout(() => {
+			document.querySelector(`.card-form`).classList.add('hidden');
+			document.querySelector(`.over-flow`).classList.add('hidden');
 			numberInput.value = '';
 			nameInput.value = '';
 			expireInput.value = '';
 			secureInput.value = '';
+		}, 2500);
 
-			document.querySelector(`.card-form`).classList.add('hidden');
-			document.querySelector(`.over-flow`).classList.add('hidden');
-		}, 2500)
+		display.innerHTML = '';
+		CardStore(numberInput, nameInput, expireInput, secureInput);
+		appendNewCards();
 	}
-	appendNewCards();
 	document.getElementById('save-card-btn').style.display = 'none';
 	document.getElementById('add-card-btn').style.display = 'block';
+
 }
+
+numberInput.addEventListener('keyup', (event) => { handleNumberValidation(event, numberField) });
+nameInput.addEventListener('keyup', (event) => { handleNameValidation(event, nameField) });
+expireInput.addEventListener('keyup', (event) => { handleExpireThroughValidation(event, expireField) });
+secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) });
 
 form.addEventListener('submit', (event) => {
 	event.preventDefault();
 	handleOperation();
 });
-
-numberInput.addEventListener('keyup', (event) => { handleNumberValidation(event, numberField) });
-nameInput.addEventListener('keyup', (event) => { handleNameValidation(event, nameField) });
-expireInput.addEventListener('keyup', (event) => { handleExpireThroughValidation(event, expireField) });
-secureInput.addEventListener('keyup', (event) => { handleSecureValidation(event, secureField) })
 
 
 const handleNumberValidation = (event, nField) => {
@@ -130,46 +134,55 @@ const handleSecureValidation = (event, sField) => {
 
 const appendNewCards = () => {
 	let cardsObj = getUserCards();
-	cardsObj.forEach(({ cardnumber, cardname, cardexpire }, index) => {
-		const row = document.createElement("tr");
-		const ind = document.createElement("td");
-		const number = document.createElement("td");
-		const name = document.createElement("td");
-		const expire = document.createElement("td");
-		const action = document.createElement("td");
-		action.className = 'actions';
 
-		const editBtn = document.createElement("button");
-		const deleteBtn = document.createElement("button");
+	for (const index in cardsObj) {
+		if (Object.hasOwnProperty.call(cardsObj, index)) {
+			const { cardnumber, cardname, cardexpire } = cardsObj[index];
 
-		ind.appendChild(document.createTextNode(`${index}`));
-		number.appendChild(document.createTextNode(`${cardnumber}`));
-		name.appendChild(document.createTextNode(`${cardname}`));
-		expire.appendChild(document.createTextNode(`${cardexpire}`))
+			const row = document.createElement("tr");
+			const ind = document.createElement("td");
+			const number = document.createElement("td");
+			const name = document.createElement("td");
+			const expire = document.createElement("td");
+			const action = document.createElement("td");
+			action.className = 'actions';
 
-		editBtn.innerHTML = `<span class="fas fa-edit edit-icon"></span>`;
-		deleteBtn.innerHTML = `<span class="fas fa-trash delete-icon"></span>`;
+			const editBtn = document.createElement("button");
+			const deleteBtn = document.createElement("button");
 
-		action.appendChild(editBtn);
-		action.appendChild(deleteBtn);
+			ind.appendChild(document.createTextNode(`${index}`));
+			number.appendChild(document.createTextNode(`${cardnumber}`));
+			name.appendChild(document.createTextNode(`${cardname}`));
+			expire.appendChild(document.createTextNode(`${cardexpire}`))
 
-		row.append(ind);
-		row.append(number);
-		row.append(name);
-		row.append(expire);
-		row.append(action);
+			editBtn.innerHTML = `<span class="fas fa-edit edit-icon"></span>`;
+			deleteBtn.innerHTML = `<span class="fas fa-trash delete-icon"></span>`;
 
-		display.appendChild(row);
+			action.appendChild(editBtn);
+			action.appendChild(deleteBtn);
 
-		editBtn.addEventListener('click', () => {
-			alert('clicked');
-		});
+			row.appendChild(ind);
+			row.appendChild(number);
+			row.appendChild(name);
+			row.appendChild(expire);
+			row.appendChild(action);
 
-		deleteBtn.addEventListener('click', () => {
-			handleDelete(`${index}`);
-		})
-	});
-	console.log(cardsObj)
+			display.appendChild(row);
+
+			editBtn.addEventListener('click', () => {
+				handleEdit(`${index}`);
+
+				document.querySelector(`.card-form`).classList.remove('hidden');
+				document.querySelector(`.over-flow`).classList.remove('hidden');
+			});
+
+			deleteBtn.addEventListener('click', () => {
+				handleDelete(`${index}`);
+			});
+		}
+	}
+
+	//console.log(cardsObj)
 }
 
 function handleDelete(ind) {
@@ -188,9 +201,48 @@ function handleDelete(ind) {
 	appendNewCards();
 }
 
-function edit(ind) {
+function handleEdit(ind) {
+	saveInd.value = ind
+	let cardsObj = getUserCards()
 
+	numberInput.value = cardsObj[ind].cardnumber;
+	nameInput.value = cardsObj[ind].cardname;
+	expireInput.value = cardsObj[ind].cardexpire;
+	secureInput.value = cardsObj[ind].cardsecure;
+
+	addBtn.style.display = 'none'
+	saveBtn.style.display = 'block'
 }
+
+saveBtn.addEventListener('click', () => {
+	let cardsObj = JSON.parse(localStorage.getItem("user-cards"));
+	let id = saveInd.value;
+
+
+	console.log(cardsObj[id].cardexpire)
+
+	cardsObj[id].cardnumber = numberInput.value;
+	cardsObj[id].cardname = nameInput.value;
+	cardsObj[id].cardexpire = expireInput.value;
+	cardsObj[id].cardsecure = secureInput.value;
+
+
+	addBtn.style.display = 'block';
+	saveBtn.style.display = 'none';
+
+	numberInput.value = '';
+	nameInput.value = '';
+	expireInput.value = '';
+	secureInput.value = '';
+	display.innerHTML = '';
+
+	localStorage.setItem("user-cards", JSON.stringify(cardsObj));
+	appendNewCards();
+	document.querySelector(`.card-form`).classList.add('hidden');
+	document.querySelector(`.over-flow`).classList.add('hidden');
+});
+
+
 
 window.addEventListener('load', () => {
 	appendNewCards();

@@ -3,9 +3,9 @@ body {
 }
 
 :root {
-	--color-success: #00bf8e;
+	--color-success: #26c614;
 	--color-warning: #f7c94b;
-	--color-danger: #f75842;
+	--color-danger: #e21c30;
 	--magnolia: hsl(217, 100%, 97%);
 	--alabaster: hsl(231, 100%, 99%);
 	--pastel-blue: hsl(228, 100%, 84%);
