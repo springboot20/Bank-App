@@ -1,24 +1,26 @@
 import showMenu, { ShowDropDown, ShowCardForm } from "./helper.js";
+import { getUserCards, CardStore } from "./AppLocalStore.js";
 
 const form = document.querySelector('form');
 const numberInput = document.querySelector('#number');
 const nameInput = document.querySelector('#name');
 const expireInput = document.querySelector('#expire-thru');
 const secureInput = document.querySelector('#security');
+const display = document.querySelector('#display-list');
 
+const saveInd = document.getElementById('save-index');
+const saveBtn = document.getElementById('save-card-btn');
 
 const numberField = document.querySelector('.card-number');
 const nameField = document.querySelector('.card-name');
 const expireField = document.querySelector('.expire-thru');
 const secureField = document.querySelector('.security-code');
 
-
 const handleOperation = () => {
 	(numberInput.value === '') ? numberField.classList.add('shake', 'error') : (event) => { handleNumberValidation(event, numberField) };
 	(nameInput.value === '') ? nameField.classList.add('shake', 'error') : (event) => { handleNameValidation(event, nameField) };
 	(expireInput.value === '') ? expireField.classList.add('shake', 'error') : (event) => { handleExpireThroughValidation(event, expireField) };
 	(secureInput.value === '') ? secureField.classList.add('shake', 'error') : (event) => { handleSecureValidation(event, secureField) };
-
 
 	setTimeout(() => {
 		numberField.classList.remove('shake');
@@ -27,23 +29,23 @@ const handleOperation = () => {
 		secureField.classList.remove('shake');
 	}, 2500);
 
-
-	let cardsObj;
-	(localStorage.getItem('user-cards') === null) ? cardsObj = [] : cardsObj = JSON.parse(localStorage.getItem('user-cards'));
-
-	let cardsDetail = {
-		cardnumber: numberInput.value,
-		cardname: nameInput.value,
-		cardexpire: expireInput.value,
-		cardSecure: secureInput.value
-	}
-
 	if (!numberField.classList.contains('error') && !nameField.classList.contains('error') && !expireField.classList.contains('error') && !secureField.classList.contains('error')) {
-		cardsObj.push(cardsDetail);
-		localStorage.setItem('user-cards', JSON.stringify(cardsObj));
-		appendNewCards();
+		CardStore(numberInput, nameInput, expireInput, secureInput);
+		setTimeout(() => {
+			numberInput.value = '';
+			nameInput.value = '';
+			expireInput.value = '';
+			secureInput.value = '';
+
+			document.querySelector(`.card-form`).classList.add('hidden');
+			document.querySelector(`.over-flow`).classList.add('hidden');
+		}, 2500)
 	}
+	appendNewCards();
+	document.getElementById('save-card-btn').style.display = 'none';
+	document.getElementById('add-card-btn').style.display = 'block';
 }
+
 form.addEventListener('submit', (event) => {
 	event.preventDefault();
 	handleOperation();
@@ -120,85 +122,54 @@ const handleSecureValidation = (event, sField) => {
 	}
 }
 
-addEventListener('load', () => {
-	document.body.classList.add('loaded');
-});
-
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
 	ShowDropDown('dropMenu', 'drop-icon');
-	ShowCardForm('add-card', 'card-form', 'over-flow','close-icon');
+	ShowCardForm('add-card', 'card-form', 'over-flow', 'close-icon');
 })();
 
-
-addEventListener('DOMContentLoaded', () => {
-	appendNewCards()
-})
-
-const display = document.querySelector('#cards-container');
-
 const appendNewCards = () => {
-	let cardsObj;
-	if (localStorage.getItem("user-cards") === null) {
-		cardsObj = [];
-	} else {
-		cardsObj = JSON.parse(localStorage.getItem('user-cards'));;
-	}
-	let output = '';
-
+	let cardsObj = getUserCards();
 	cardsObj.forEach(({ cardnumber, cardname, cardexpire }, index) => {
-		output += `
-		<div class="credit-card">
-			<div class="card-content">
-				<img src="./img/chip-1.svg" alt="" class="chip-image">
-				<div class="card-details">
-					<div class="credit-number">
-						<span class="number-label">Credit Number</span>
-						<span class="number">${cardnumber}</span>
-					</div>
-					<div class="credit-valid">
-						<div class="credit-name">
-							<span class="name-label">Credit Name</span>
-							<span class="name">${cardname}</span>
-						</div>
-						<div class="card-exp">
-							<span class="expire-label">Valid Through</span>
-							<span class="expire">${cardexpire}</span>
-						</div>
-					</div>
-				</div>
-				<img src="img/visa-10.svg" alt="" class="visa-image">
-				<img src="img/mastercard-2.svg" alt="" class="master-image">
-			</div>
-			<div class="edit-buttons">
-				<button type="button" id="edit-btn" class="edit-btn"><span class="fa fa-edit"></span></button>
-				<button type="button" id="delete-btn" class="delete-btn"><span class="fa fa-trash-can"></span></button>
-			</div>
-		</div>
-		`;
+		const row = document.createElement("tr");
+		const ind = document.createElement("td");
+		const number = document.createElement("td");
+		const name = document.createElement("td");
+		const expire = document.createElement("td");
+		const action = document.createElement("td");
+		action.className = 'actions';
 
-		display.innerHTML = output;
+		const editBtn = document.createElement("button");
+		const deleteBtn = document.createElement("button");
 
-		let deleteBtn = display.querySelectorAll('.delete-btn');
-		let editBtn = display.querySelectorAll('.edit-btn');
+		ind.appendChild(document.createTextNode(`${index}`));
+		number.appendChild(document.createTextNode(`${cardnumber}`));
+		name.appendChild(document.createTextNode(`${cardname}`));
+		expire.appendChild(document.createTextNode(`${cardexpire}`))
 
-		deleteBtn.forEach((btn) => {
-			btn.addEventListener('click', () => {
-				handleDelete(index);
-				console.log(index)
-			});
+		editBtn.innerHTML = `<span class="fas fa-edit edit-icon"></span>`;
+		deleteBtn.innerHTML = `<span class="fas fa-trash delete-icon"></span>`;
+
+		action.appendChild(editBtn);
+		action.appendChild(deleteBtn);
+
+		row.append(ind);
+		row.append(number);
+		row.append(name);
+		row.append(expire);
+		row.append(action);
+
+		display.appendChild(row);
+
+		editBtn.addEventListener('click', () => {
+			alert('clicked');
+		});
+
+		deleteBtn.addEventListener('click', () => {
+			handleDelete(`${index}`);
 		})
-
-		editBtn.forEach((btn) => {
-			btn.addEventListener('click', () => {
-				setTimeout(() => {
-					window.location.href = './edit.html'
-				}, 2000)
-			});
-		})
-	})
-
-	return cardsObj;
+	});
+	console.log(cardsObj)
 }
 
 function handleDelete(ind) {
@@ -213,6 +184,15 @@ function handleDelete(ind) {
 	}
 	cardsObj.splice(ind, 1);
 	localStorage.setItem("user-cards", JSON.stringify(cardsObj));
-	display.innerHTML = "";
+	display.innerHTML = ''
 	appendNewCards();
 }
+
+function edit(ind) {
+
+}
+
+window.addEventListener('load', () => {
+	appendNewCards();
+	document.body.classList.add('loaded');
+})

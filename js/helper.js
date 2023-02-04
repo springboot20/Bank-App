@@ -55,6 +55,10 @@ const ShowCardForm = (btnId, formId, overFlowId, closeId) => {
 
     openBtn.addEventListener("click", () => {
         openCardForm(cardForm, overflow);
+
+        document.getElementById('save-card-btn').style.display = 'none';
+        document.getElementById('add-card-btn').style.display = 'block';
+
     });
 
     closeBtn.addEventListener("click", (event) => {

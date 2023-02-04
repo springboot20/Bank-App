@@ -13,110 +13,63 @@ body {
 	--light-blue: hsl(206, 94%, 87%);
 }
 
-.cards {
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	gap: 10px;
+.table-data {
+	margin-top: 2rem;
 }
 
-.credit-card {
-	position: relative;
-	width: 33rem;
-	height: 17rem;
-	padding: 20px 15px;
-	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(../img/background.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	border-radius: 1em;
-	box-shadow: 0 0 10px rgb(0 0 0 / 30%);
-	border: 2px solid var(--lighter-color);
-	-webkit-backdrop-filter: blur(1px);
-	backdrop-filter: blur(1px);
-	overflow: hidden;
-}
-
-.credit-card .card-details {
-	margin-top: 5.5rem;
-}
-
-.card-details .credit-number {
-	display: flex;
-	flex-direction: column;
-	line-height: 1.8rem;
-	flex-shrink: 0;
-}
-
-.card-details .credit-number span {
+table {
+	text-align: left;
 	font-weight: 600;
+	width: 100%;
+	border-collapse: collapse;
 }
 
-.card-details .credit-number span.number-label {
-	color: var(--lighter-color);
-	font-size: 10px;
-}
-
-.card-details .credit-number span.number {
-	font-size: 1.3em;
-	color: var(--color-white);
-}
-
-.card-details .credit-valid {
-	margin-top: 1rem;
-	display: flex;
-	flex-shrink: 0;
-	gap: 2rem;
-}
-
-.credit-valid .credit-name,
-.credit-valid .card-exp {
-	display: flex;
-	flex-shrink: 0;
-	flex-direction: column;
-}
-
-.credit-valid .credit-name span,
-.credit-valid .card-exp span {
-	color: var(--lighter-color);
-	font-weight: 600;
-}
-
-.credit-valid .credit-name span.name,
-.credit-valid .card-exp span.expire {
-	color: var(--color-white);
-}
-
-.cards .credit-card img {
-	position: absolute;
-	max-width: 100%;
-	height: 50px;
-	object-fit: contain;
-}
-
-.cards .credit-card img.visa-image {
-	height: 20px;
-	top: 10px;
-	z-index: -1;
-}
-
-.cards .credit-card img.master-image {
-	height: 50px;
-	bottom: 10px;
-	right: 14px;
-	z-index: -1;
-}
-
-.cards .credit-card img.chip-image {
-	height: 40px;
-	position: absolute;
-	top: 40px;
-}
-
-.card-actions {
+table {
+	width: 100%;
 	margin-bottom: 1rem;
-	display: flex;
-	align-items: center;
-	gap: 2rem;
+	background-color: transparent;
+}
+
+table thead th {
+	padding: 0.75rem;
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
+}
+
+table tbody {
+	border-top: 2px solid #dee2e6;
+}
+
+table th,
+table td {
+	padding: 0.3rem;
+	padding-left: 1em;
+}
+
+table {
+	border: 1px solid #dee2e6;
+}
+
+table th,
+table td {
+	border: 1px solid #dee2e6;
+}
+
+thead th,
+thead td {
+	border-bottom-width: 2px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+	background-color: hsl(228, 100%, 84%);
+}
+
+.table-hover tbody tr:hover {
+	background-color: rgba(0, 0, 0, 0.075);
 }
 
 button.add-card {
@@ -141,45 +94,31 @@ button.add-card span.fa {
 	cursor: pointer;
 }
 
-.edit-buttons {
-	position: absolute;
-	left: 0;
-	top: 50%;
-	opacity: 0;
-	right: 0;
-	height: 100%;
-	transform: translateY(-50%);
+.actions {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	flex-shrink: 0;
-	gap: 1rem;
-	backdrop-filter: blur(1px);
-	background: rgba(0, 0, 0, 0.1);
-	transition: all 600ms ease-in-out;
+	gap: 2rem;
 }
 
-.edit-buttons button {
-	height: 40px;
-	width: 40px;
+.actions button {
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	text-align: center;
 	border-radius: 50%;
 	border: none;
 	outline: none;
-	box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-	font-size: 1.34em;
+	background: transparent;
+	font-size: 1.44em;
 	cursor: pointer;
 }
 
-.edit-buttons button.delete-btn>span {
+.actions button>span.delete-icon {
 	color: var(--color-danger);
 }
 
-.edit-buttons button.edit-btn>span {
+.actions button>span.edit-icon {
 	color: var(--color-success);
-}
-
-.credit-card:hover .edit-buttons {
-	opacity: 1;
 }
 
 .card-form {

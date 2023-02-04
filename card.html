@@ -125,7 +125,21 @@
 									<span class="btn-label"> Add new card</span>
 								</button>
 							</div>
-							<div class="cards" id="cards-container"></div>
+
+							<div class="table-data " id="table-container">
+								<table class="table-striped">
+									<thead>
+										<tr>
+											<th>S/N</th>
+											<th>Card Number</th>
+											<th>Card Name</th>
+											<th>Card Expire Thru</th>
+											<th>Card Actions</th>
+										</tr>
+									</thead>
+									<tbody id="display-list"></tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -140,6 +154,7 @@
 							</div>
 							<small class="error error-txt">Card number cannot be blanked</small>
 						</div>
+						<input type="hidden" id="save-index">
 						<div class="field card-name">
 							<div class="form-control">
 								<label for="card-name">Name on Card</label>
@@ -166,6 +181,8 @@
 							</div>
 						</div>
 						<button type="submit" class="btn add-btn" id="add-card-btn">Add card</button>
+						<button type="submit" class="btn save-btn" id="save-card-btn" style="display: none;">Save card
+							changes</button>
 					</form>
 				</div>
 
