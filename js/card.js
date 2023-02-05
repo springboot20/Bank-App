@@ -47,7 +47,6 @@ const handleOperation = () => {
 	}
 	document.getElementById('save-card-btn').style.display = 'none';
 	document.getElementById('add-card-btn').style.display = 'block';
-
 }
 
 numberInput.addEventListener('keyup', (event) => { handleNumberValidation(event, numberField) });
@@ -230,11 +229,11 @@ saveBtn.addEventListener('click', () => {
 	addBtn.style.display = 'block';
 	saveBtn.style.display = 'none';
 
-	numberInput.value = '';
-	nameInput.value = '';
-	expireInput.value = '';
-	secureInput.value = '';
-	display.innerHTML = '';
+		numberInput.value = '';
+		nameInput.value = '';
+		expireInput.value = '';
+		secureInput.value = '';
+		display.innerHTML = '';
 
 	localStorage.setItem("user-cards", JSON.stringify(cardsObj));
 	appendNewCards();
