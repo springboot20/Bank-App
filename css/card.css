@@ -62,15 +62,24 @@ thead td {
 
 .table-striped tbody tr:nth-of-type(odd) {
 	background-color: rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	transition: all 500ms ease;
 }
 
 .table-striped tbody tr:nth-of-type(even) {
 	background-color: hsl(228, 100%, 84%);
+	cursor: pointer;
+	transition: all 500ms ease;
 }
 
-.table-hover tbody tr:hover {
-	background-color: rgba(0, 0, 0, 0.075);
+.table-striped tbody tr:nth-of-type(even):hover {
+	background-color: hsla(228, 100%, 84%, 0.723);
 }
+
+.table-striped tbody tr:nth-of-type(odd):hover {
+	background-color: #e6e1e1f2;
+}
+
 
 button.add-card {
 	width: 19rem;
