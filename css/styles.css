@@ -54,7 +54,7 @@ body {
 .header {
     background: #f7f7f7;
     box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.2);
-    padding: 15px 25px;
+    padding: 12px 20px;
 }
 
 form {
@@ -243,7 +243,7 @@ form p a:active {
 
 @media screen and (max-width:425px) {
     .main-container {
-        width: 350px;
+        width: 385px;
     }
 
     h2.form-title {
@@ -260,7 +260,7 @@ form p a:active {
     }
 
     .form-container button.btn {
-        padding: 0.75rem;
+        padding: 0.65rem;
     }
 }
 
@@ -277,7 +277,7 @@ form p a:active {
 
 @media screen and (min-width:769px) {
     .main-container {
-        width: 420px;
+        width: 450px;
         max-width: 100%;
     }
 }
