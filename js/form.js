@@ -2,7 +2,7 @@
  * FORM SCRIPT SCOPE
 */
 import showMenu, { ShowDropDown } from "./helper.js"
-import { CardStore } from "./AppLocalStore.js";
+import { CardStore, Cards } from "./AppLocalStore.js";
 
 (() => {
 	showMenu('open-btn', 'nav-menu-container')('close-icon');
@@ -39,6 +39,7 @@ form.addEventListener('submit', (event) => {
 	if (!numberField.classList.contains('error') && !nameField.classList.contains('error') && !expireField.classList.contains('error') && !secureField.classList.contains('error')) {
 		setTimeout(() => window.location.href = form.getAttribute('action'), 4500);
 		CardStore(numberInput, nameInput, expireInput, secureInput);
+		Cards(numberInput, nameInput, expireInput, secureInput);
 	}
 });
 

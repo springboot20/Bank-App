@@ -645,6 +645,7 @@ main.main .content-container {
 		transition: all 500ms ease-in-out;
 		-webkit-backdrop-filter: blur(5px);
 		backdrop-filter: blur(5px);
+		overflow-y: scroll;
 	}
 
 }

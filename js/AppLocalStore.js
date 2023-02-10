@@ -3,7 +3,6 @@ let getUsers = () => {
     (localStorage.getItem('user-login') === null) ? userArray = [] : userArray = JSON.parse(localStorage.getItem('user-login'));
     return userArray;
 }
-
 /**
  *
  * @param {string} username
@@ -46,9 +45,6 @@ let CardStore = (number, name, expire, secure) => {
     cards.push(cardsDetail);
     localStorage.setItem('user-cards', JSON.stringify(cards));
 }
-
-
-
 export default LocalStore;
 export { getUsers }
 export { getUserCards, CardStore }

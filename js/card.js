@@ -70,11 +70,11 @@ const handleNumberValidation = (event, nField) => {
 		nField.classList.remove('error');
 
 		if (event.target.value.length > 14) {
-			event.target.value = outputValue.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3 $4")
+			event.target.value = outputValue.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3 $4");
 		} else if (event.target.value.length > 9) {
-			event.target.value = outputValue.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3")
+			event.target.value = outputValue.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3");
 		} else if (event.target.value.length > 4) {
-			event.target.value = outputValue.replace(/(\d{4})(\d{0,4})/, "$1 $2")
+			event.target.value = outputValue.replace(/(\d{4})(\d{0,4})/, "$1 $2");
 		}
 	}
 }
@@ -240,8 +240,6 @@ saveBtn.addEventListener('click', () => {
 	document.querySelector(`.card-form`).classList.add('hidden');
 	document.querySelector(`.over-flow`).classList.add('hidden');
 });
-
-
 
 window.addEventListener('load', () => {
 	appendNewCards();
