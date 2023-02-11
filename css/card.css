@@ -333,7 +333,7 @@ form .field.error .error {
 	}
 
 	.card-form {
-		transform: translate(-15%, -8%);
+		transform: translate(-38%, -4%);
 		width: 460px;
 		margin-top: 90px;
 		transition: all 700ms ease-in-out;
@@ -348,6 +348,7 @@ form .field.error .error {
 }
 
 @media (min-width:830px) {
+	
 	.over-flow {
 		position: absolute;
 		top: 0;

@@ -628,7 +628,7 @@ main.main .content-container {
 *******************************/
 @media screen and (max-width: 768px) {
 	.container {
-		padding: 0 2rem;
+		padding: 0 1rem;
 		margin: 0 auto;
 	}
 
@@ -666,6 +666,12 @@ main.main .content-container {
 		backdrop-filter: blur(5px);
 	}
 
+	.container {
+		min-width: 54rem;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
 	.nav-container {
 		gap: 43rem;
 	}
@@ -684,6 +690,7 @@ main.main .content-container {
 @media (min-width:830px) {
 	.container {
 		padding: 0 1rem;
+		max-width: var(--container-width-lg);
 	}
 
 	.navigation-container .nav-menu-container {
