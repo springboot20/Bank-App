@@ -362,7 +362,7 @@ form .field.error .error {
 @media (min-width:830px) {
 
 	.over-flow {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		bottom: 0;
