@@ -191,6 +191,14 @@ form {
 	color: var(--marine-blue);
 }
 
+.card-form input:focus {
+	color: #212529;
+	background-color: #fff;
+	border-color: #86b7fe;
+	outline: 0;
+	box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+}
+
 .card-form button.btn {
 	width: 100%;
 	padding: 1rem;
@@ -228,7 +236,6 @@ form .field.error input {
 	border-color: #f75842;
 }
 
-form .field input:focus,
 form .field.valid input {
 	border-color: #167ece;
 }
@@ -348,7 +355,7 @@ form .field.error .error {
 }
 
 @media (min-width:830px) {
-	
+
 	.over-flow {
 		position: absolute;
 		top: 0;

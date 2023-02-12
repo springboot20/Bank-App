@@ -7,13 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="./img/piggy-bank.svg" type="image/x-icon" />
 	<script src="https://kit.fontawesome.com/643f8e5097.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.min.css">
+	<link rel="stylesheet" href="../fontawesome-free-6.2.1-web/css/all.min.css" />
 	<link rel="stylesheet" href="./css/app.css" />
+	<link rel="stylesheet" href="./css/trasnfer.css" />
 	<title>Piggy Bank</title>
 </head>
 
 <body>
-
 	<div id="loader">
 		<div id="spinner"></div>
 
@@ -25,7 +25,6 @@
 		<nav class="navigation container" id="navigation">
 			<div class="container navigation-container">
 				<div class="nav-menu-container">
-
 					<div class="userInfos">
 						<div class="userLogo">
 							<span class="far fa-user user-icon"></span>
@@ -115,17 +114,43 @@
 							</button>
 						</div>
 					</div>
-				</nav>
+				</nav>9
 
 				<!-- MAIN CONTENT MARKUP -->
 				<section class="transfer-container" id="transfer-container">
-					<div class="container"></div>
+					<div class="container">
+						<div class="transaction-form">
+							<form action="" id="transaction-form" onsubmit="return false">
+								<div class="form-group">
+									<label for="bank-name" class="form-label">Bank Name</label>
+									<input type="text" name="" id="" class="form-control" placeholder="please select a bank" />
+								</div>
+								<div class="form-group">
+									<label for="bank-account" class="form-label">Account number</label>
+									<input type="text" name="bank-account" id="bank-account" class="form-control"
+										placeholder="enter account number" />
+								</div>
+								<div class="form-group">
+									<label for="amount" class="form-label">Amount</label>
+									<div class="flex-group">
+										<span class="fa fa-naira-sign icon"></span>
+										<input type="text" name="amount" id="amount" class="form-control" placeholder="enter amount" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="message" class="form-label">Message (optional)</label>
+									<textarea name="amount" id="message" class="form-control" placeholder="Enter message"></textarea>
+								</div>
+								<button type="submit" class="_btn btn-primary pay-btn">Done</button>
+							</form>
+						</div>
+					</div>
 				</section>
 			</div>
 		</main>
 	</div>
 
-	<script src="./js/transfer.js"></script>
+	<script type="module" src="./js/transfer.js"></script>
 </body>
 
 </html>
