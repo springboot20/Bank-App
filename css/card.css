@@ -133,9 +133,8 @@ button.add-card span.fa {
 .card-form {
 	position: absolute;
 	top: 30%;
-	width: 320px;
+	width: 352px;
 	left: 45%;
-	transform: translate(-45%, -30%);
 	margin-top: 90px;
 	background: hsl(231, 100%, 99%);
 	border-radius: 1.4rem;
@@ -143,6 +142,11 @@ button.add-card span.fa {
 	animation: animateForm 3s linear alternate;
 	transition: all 7000ms ease;
 	z-index: 99;
+	-webkit-transform: translate(-45%, -6%);
+	-moz-transform: translate(-45%, -6%);
+	-ms-transform: translate(-45%, -6%);
+	-o-transform: translate(-45%, -6%);
+	transform: translate(-45%, -6%);
 }
 
 
