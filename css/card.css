@@ -133,6 +133,7 @@ button.add-card span.fa {
 .card-form {
 	position: absolute;
 	top: 30%;
+	width: 320px;
 	left: 45%;
 	transform: translate(-45%, -30%);
 	margin-top: 90px;
