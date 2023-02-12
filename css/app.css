@@ -429,7 +429,7 @@ ul.log-out li.log-out-container {
 }
 
 .nav-menu-container.active ul.log-out li.log-out-container {
-	margin-left: 0px;
+	margin-left: 10px;
 	opacity: 1;
 }
 
@@ -457,8 +457,6 @@ li.log-out-container a span.log-out-label {
 li.log-out-container span.fas {
 	transform: rotateZ(180deg);
 	font-size: 1.9em;
-	line-height: 50px;
-	height: 50px;
 }
 
 /***********************************
@@ -484,7 +482,7 @@ nav.app-navigation {
 	padding: 1rem;
 	display: flex;
 	align-items: center;
-	gap: 17rem;
+	justify-content: space-between;
 }
 
 .nav-container .nav-logo {
@@ -650,7 +648,7 @@ main.main .content-container {
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.navigation-container .nav-menu-container {
 		position: fixed;
 		top: 0;
@@ -673,7 +671,8 @@ main.main .content-container {
 	}
 
 	.nav-container {
-		gap: 43rem;
+		gap: 45rem;
+		justify-content: flex-start;
 	}
 
 	.card-container {
