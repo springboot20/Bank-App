@@ -188,7 +188,7 @@ form {
 	outline: none;
 	border: none;
 	height: 40px;
-	border: 2px solid #bfbfbf;
+	border:0.14rem solid #bfbfbf;
 	width: 100%;
 	font-size: 1.4em;
 	font-weight: 700;
