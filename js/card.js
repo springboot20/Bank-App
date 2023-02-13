@@ -25,21 +25,30 @@ const handleOperation = () => {
 	(secureInput.value === '') ? secureField.classList.add('shake', 'error') : (event) => { handleSecureValidation(event, secureField) };
 
 	setTimeout(() => {
-		numberField.classList.remove('shake');
-		nameField.classList.remove('shake');
-		expireField.classList.remove('shake');
-		secureField.classList.remove('shake');
+		numberField.classList.remove('shake', 'error');
+		nameField.classList.remove('shake', 'error');
+		expireField.classList.remove('shake', 'error');
+		secureField.classList.remove('shake', 'error');
 	}, 2500);
 
 	if (!numberField.classList.contains('error') && !nameField.classList.contains('error') && !expireField.classList.contains('error') && !secureField.classList.contains('error')) {
 		setTimeout(() => {
 			document.querySelector(`.card-form`).classList.add('hidden');
 			document.querySelector(`.over-flow`).classList.add('hidden');
+		}, 1500);
+
+
+		setTimeout(() => {
 			numberInput.value = '';
 			nameInput.value = '';
 			expireInput.value = '';
 			secureInput.value = '';
-		}, 2500);
+
+			numberField.classList.remove('valid');
+			nameField.classList.remove('valid');
+			expireField.classList.remove('valid');
+			secureField.classList.remove('valid');
+		}, 600)
 
 		display.innerHTML = '';
 		CardStore(numberInput, nameInput, expireInput, secureInput);
@@ -229,10 +238,12 @@ saveBtn.addEventListener('click', () => {
 	addBtn.style.display = 'block';
 	saveBtn.style.display = 'none';
 
-	numberInput.value = '';
-	nameInput.value = '';
-	expireInput.value = '';
-	secureInput.value = '';
+	setTimeout(() => {
+		numberInput.value = '';
+		nameInput.value = '';
+		expireInput.value = '';
+		secureInput.value = '';
+	}, 700)
 	display.innerHTML = '';
 
 	localStorage.setItem("user-cards", JSON.stringify(cardsObj));
