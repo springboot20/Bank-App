@@ -229,11 +229,11 @@ saveBtn.addEventListener('click', () => {
 	addBtn.style.display = 'block';
 	saveBtn.style.display = 'none';
 
-		numberInput.value = '';
-		nameInput.value = '';
-		expireInput.value = '';
-		secureInput.value = '';
-		display.innerHTML = '';
+	numberInput.value = '';
+	nameInput.value = '';
+	expireInput.value = '';
+	secureInput.value = '';
+	display.innerHTML = '';
 
 	localStorage.setItem("user-cards", JSON.stringify(cardsObj));
 	appendNewCards();
