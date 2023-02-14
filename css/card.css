@@ -141,7 +141,7 @@ button.add-card span.fa {
 	box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.4);
 	animation: animateForm 3s linear alternate;
 	transition: all 7000ms ease;
-	z-index: 99;
+	z-index: 1099;
 	-webkit-transform: translate(-45%, -6%);
 	-moz-transform: translate(-45%, -6%);
 	-ms-transform: translate(-45%, -6%);
