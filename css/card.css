@@ -141,7 +141,7 @@ button.add-card span.fa {
 .card-form {
 	position: absolute;
 	top: 30%;
-	width: 352px;
+	width: 460px;
 	left: 45%;
 	margin-top: 90px;
 	background: hsl(231, 100%, 99%);
@@ -150,11 +150,11 @@ button.add-card span.fa {
 	animation: animateForm 3s linear alternate;
 	transition: all 7000ms ease;
 	z-index: 1099;
-	-webkit-transform: translate(-45%, -6%);
-	-moz-transform: translate(-45%, -6%);
-	-ms-transform: translate(-45%, -6%);
-	-o-transform: translate(-45%, -6%);
-	transform: translate(-45%, -6%);
+	-webkit-transform: translate(-39%, 25%);
+	-moz-transform: translate(-39%, 25%);
+	-ms-transform: translate(-39%, 25%);
+	-o-transform: translate(-39%, 25%);
+	transform: translate(-39%, 25%);
 }
 
 @keyframes animateForm {
@@ -326,13 +326,13 @@ form .field.error .error {
 		justify-content: center;
 		align-items: center;
 	}
-}
 
-@media (min-width: 426px) {
 	.card-form {
 		width: 400px;
 	}
+}
 
+@media (min-width: 426px) {
 	.card-form {
 		transform: translate(-44.5%, -14%);
 	}
