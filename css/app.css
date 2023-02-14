@@ -648,6 +648,23 @@ main.main .content-container {
 
 }
 
+@media (max-width:425px) {
+	.navigation-container .nav-menu-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		transform: translateX(-200%);
+		padding: 8.5rem 30px;
+		z-index: 99;
+		background: var(--color-primary) no-repeat;
+		height: 100%;
+		width: 100%;
+		transition: all 500ms ease-in-out;
+		backdrop-filter: blur(5px);
+		overflow-y: scroll;
+	}
+}
+
 @media (min-width: 769px) {
 	.navigation-container .nav-menu-container {
 		position: fixed;
