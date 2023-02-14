@@ -11,7 +11,8 @@
 }
 
 :root {
-	--container-width-lg: 140rem;
+	--container-width: 768px;
+	--container-width-mg: 64rem;
 
 	--color-primary: linear-gradient(#3127d3, #080624dd, #08053add);
 	--color-success: #00bf8e;
@@ -33,12 +34,6 @@ body {
 	background: hsl(231, 100%, 99%);
 	font-family: Ubuntu;
 	position: relative;
-}
-
-.container {
-	max-width: var(--container-width-lg);
-	margin: 0 auto;
-	padding: 0 1.5rem;
 }
 
 #loader {
@@ -626,8 +621,9 @@ main.main .content-container {
 *******************************/
 @media screen and (max-width: 768px) {
 	.container {
-		padding: 0 1rem;
+		width: var(--container-width);
 		margin: 0 auto;
+		padding: 0 1.5rem;
 	}
 
 	.navigation-container .nav-menu-container {
@@ -664,6 +660,12 @@ main.main .content-container {
 }
 
 @media (min-width: 769px) {
+	.container {
+		padding: 0 1rem;
+		margin: 0 auto;
+		width: var(--container-width-mg);
+	}
+
 	.navigation-container .nav-menu-container {
 		position: fixed;
 		top: 0;
@@ -677,12 +679,6 @@ main.main .content-container {
 		transition: all 500ms ease-in-out;
 		-webkit-backdrop-filter: blur(5px);
 		backdrop-filter: blur(5px);
-	}
-
-	.container {
-		min-width: 54rem;
-		margin: 0 auto;
-		padding: 0 1.5rem;
 	}
 
 	.nav-container {
