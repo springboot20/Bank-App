@@ -13,6 +13,14 @@ body {
 	--light-blue: hsl(206, 94%, 87%);
 }
 
+.content-container {
+	-webkit-transform: translateY(8vh);
+	-moz-transform: translateY(8vh);
+	-ms-transform: translateY(8vh);
+	-o-transform: translateY(8vh);
+	transform: translateY(8vh);
+}
+
 .table-data {
 	margin-top: 2rem;
 }
@@ -149,7 +157,6 @@ button.add-card span.fa {
 	transform: translate(-45%, -6%);
 }
 
-
 @keyframes animateForm {
 	0% {
 		transform: translate(-45%, -30%) scale(0);
@@ -188,7 +195,7 @@ form {
 	outline: none;
 	border: none;
 	height: 40px;
-	border:0.14rem solid #bfbfbf;
+	border: 0.14rem solid #bfbfbf;
 	width: 100%;
 	font-size: 1.4em;
 	font-weight: 700;
