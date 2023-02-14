@@ -639,11 +639,10 @@ main.main .content-container {
 		z-index: 99;
 		background: var(--color-primary) no-repeat;
 		height: 100%;
-		width: 55%;
+		width: 345px;
 		transition: all 500ms ease-in-out;
 		-webkit-backdrop-filter: blur(5px);
 		backdrop-filter: blur(5px);
-		overflow-y: scroll;
 	}
 
 }
@@ -661,7 +660,6 @@ main.main .content-container {
 		width: 100%;
 		transition: all 500ms ease-in-out;
 		backdrop-filter: blur(5px);
-		overflow-y: scroll;
 	}
 }
 
