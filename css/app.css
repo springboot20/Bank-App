@@ -236,7 +236,7 @@ ul.nav-menu li.nav-item a.nav-link {
 	white-space: nowrap;
 	color: var(--color-white);
 	font-weight: 500;
-	margin: 15px 0 10px 0;
+	margin: 2.5rem 0 10px 0;
 	transition: all 500ms ease;
 }
 
