@@ -398,7 +398,7 @@ form .field.error .error {
 
 	.card-form .flex-field {
 		display: flex;
-		flex-direction: ro;
+		flex-direction: row;
 		gap: 1rem;
 		flex-shrink: 0;
 	}
