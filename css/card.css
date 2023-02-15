@@ -13,12 +13,12 @@ body {
 	--light-blue: hsl(206, 94%, 87%);
 }
 
-.content-container {
-	-webkit-transform: translateY(8vh);
-	-moz-transform: translateY(8vh);
-	-ms-transform: translateY(8vh);
-	-o-transform: translateY(8vh);
-	transform: translateY(8vh);
+#content-container {
+	-webkit-transform: translateY(5vh);
+	-moz-transform: translateY(5vh);
+	-ms-transform: translateY(5vh);
+	-o-transform: translateY(5vh);
+	transform: translateY(5vh);
 }
 
 .table-data {
@@ -87,7 +87,6 @@ thead td {
 .table-striped tbody tr:nth-of-type(odd):hover {
 	background-color: #e6e1e1f2;
 }
-
 
 button.add-card {
 	width: 19rem;
@@ -308,6 +307,14 @@ form .field.error .error {
 }
 
 @media (max-width:768px) {
+	#content-container {
+		-webkit-transform: translateY(10vh);
+		-moz-transform: translateY(10vh);
+		-ms-transform: translateY(10vh);
+		-o-transform: translateY(10vh);
+		transform: translateY(10vh);
+}
+
 	.over-flow {
 		position: fixed;
 		top: 0;

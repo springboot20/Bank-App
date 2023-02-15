@@ -461,6 +461,14 @@ main.main {
 	position: absolute;
 }
 
+#main-container {
+	-webkit-transform: translateY(9vh);
+	-moz-transform: translateY(9vh);
+	-ms-transform: translateY(9vh);
+	-o-transform: translateY(9vh);
+	transform: translateY(9vh);
+}
+
 nav.app-navigation {
 	height: 5rem;
 	position: fixed;
@@ -534,14 +542,6 @@ nav.app-navigation {
 	cursor: pointer;
 	font-weight: 600;
 	color: var(--color-white);
-}
-
-main.main .content-container {
-	-webkit-transform: translateY(10vh);
-	-moz-transform: translateY(10vh);
-	-ms-transform: translateY(10vh);
-	-o-transform: translateY(10vh);
-	transform: translateY(10vh);
 }
 
 .card-container {
