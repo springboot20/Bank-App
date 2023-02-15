@@ -537,7 +537,11 @@ nav.app-navigation {
 }
 
 main.main .content-container {
-	transform: translateY(75px);
+	-webkit-transform: translateY(10vh);
+	-moz-transform: translateY(10vh);
+	-ms-transform: translateY(10vh);
+	-o-transform: translateY(10vh);
+	transform: translateY(10vh);
 }
 
 .card-container {
@@ -662,8 +666,7 @@ main.main .content-container {
 @media (min-width: 769px) {
 	.container {
 		padding: 0 1rem;
-		margin: 0 auto;
-		width: var(--container-width-mg);
+		width: var(--container-width-md);
 	}
 
 	.navigation-container .nav-menu-container {
@@ -698,11 +701,6 @@ main.main .content-container {
 }
 
 @media (min-width:830px) {
-	.container {
-		padding: 0 1rem;
-		max-width: var(--container-width-lg);
-	}
-
 	.navigation-container .nav-menu-container {
 		position: fixed;
 		top: 0;
@@ -756,6 +754,7 @@ main.main .content-container {
 @media (min-width:992px) {
 	.container {
 		padding: 0 1rem;
+		max-width: 1400px;
 	}
 
 	.nav-container {
