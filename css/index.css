@@ -12,9 +12,9 @@
 }
 
 :root {
-  --container-width-lg: 130rem;
-  --container-width-md: 60%;
-  --container-width-xm: 100%;
+  --container-width-lg: 148rem;
+  --container-width-md: 992px;
+  --container-width-xm: 768px;
   --navigation-height: 5.5rem;
   --color-primary: #444BD3;
   --color-secondary: #4E8AF4;
@@ -69,6 +69,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
 }
 
 .nav-container a.nav-logo {
@@ -110,16 +111,6 @@ a.sign {
   display: none;
 }
 
-ul.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-li.nav-item {
-  display: inline-flex;
-  margin: 0 1rem;
-}
 
 li.nav-item a.nav-link {
   color: var(--text-secondary);
@@ -137,7 +128,7 @@ li.nav-item a.nav-link {
 }
 
 .heading {
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   line-height: 6.3rem;
   color: var(--text-primary);
@@ -179,7 +170,28 @@ li.nav-item a.nav-link {
   right: 30px;
 }
 
-@media screen and (max-width:870px) {
+@media screen and (max-width:425px) {
+  .nav-container {
+    gap: 8.5rem;
+  }
+
+  .heading {
+    font-size: 3rem;
+    line-height: 4.2rem;
+  }
+
+  .features-container .features-item {
+    width: 43rem;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    max-width: var(--container-width-md);
+    margin: auto auto;
+    padding: 0 1.5rem;
+  }
+
   .notification-container span#open-btn,
   .nav-menu-container span.close-icon {
     display: block;
@@ -289,17 +301,25 @@ li.nav-item a.nav-link {
   }
 }
 
-@media screen and (max-width:425px) {
+@media (max-width:992px) {
   .nav-container {
-    gap: 8.5rem;
+    gap: 6rem;
   }
 
-  .heading {
-    font-size: 3rem;
-    line-height: 4.2rem;
+  .features-container {
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  }
+}
+
+@media (max-width:1400px) {
+  ul.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 
-  .features-container .features-item {
-    width: 43rem;
+  li.nav-item {
+    display: inline-flex;
+    margin: 0 1rem;
   }
 }
