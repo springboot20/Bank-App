@@ -281,6 +281,13 @@ li.nav-item a.nav-link {
     width: 45rem;
     height: auto;
   }
+
+  .features-container {
+    padding: 3.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
 }
 
 @media screen and (max-width:425px) {
@@ -293,7 +300,7 @@ li.nav-item a.nav-link {
     line-height: 4.2rem;
   }
 
-  .features-container .features-item{
+  .features-container .features-item {
     width: 43rem;
   }
 }
