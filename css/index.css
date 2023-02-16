@@ -185,7 +185,7 @@ li.nav-item a.nav-link {
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:870px) {
   .container {
     max-width: var(--container-width-md);
     margin: auto auto;
